@@ -19,7 +19,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  right: 0;
+  right: 0; 
   /* left: 40px; */
 /*   -webkit-transform: translate(40px, 0);
   -moz-transform: translate(40px, 0); */
@@ -343,7 +343,6 @@ input:-ms-placeholder {
   width: 225px;
   font-family: Georgia, "Times New Roman", Times, serif;
   list-style: none;
-  text-transform: capitalize;
 }
 
 #tocView li:active,
@@ -815,3 +814,30 @@ input:-ms-placeholder {
 .icon-columns:before { content: '\e810'; } /* '' */
 .icon-list:before { content: '\e800'; } /* '' */
 .icon-resize-small:before { content: '\e808'; } /* '' */
+
+
+#footnoteView {
+  position:absolute;
+  display:none;
+  
+  left:0px;
+  top:60%;
+  height: 30%;
+    
+  background-color:#777;
+  outline: 5px solid #777;
+  border: 1px solid white;
+  padding:15px;
+  color:#FFF;
+  border-radius: 5px;
+  opacity: .9;
+  text-align: left;
+  overflow:auto;
+  z-index: 8000;
+}
+
+#footnoteView p {
+  text-align: left;
+  hyphens: none;
+  font-size:12pt;
+}

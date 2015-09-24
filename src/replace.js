@@ -32,11 +32,15 @@ EPUBJS.replace.hrefs = function(callback, renderer){
                     relative = EPUBJS.core.resolveUrl(directory, href);
                 }
             } else {
-                relative = href;
+                relative = href; 
             }
 
-			link.onclick = function(){
-				book.goto(relative);
+			link.onclick = function(event){
+				// book.goto(relative);
+				if (!book.goto(relative)) {
+					book.trigger("renderer:showFootnote", event);
+				}
+
 				return false;
 			};
 

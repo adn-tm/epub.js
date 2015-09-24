@@ -1,0 +1,737 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ma",
+				"maxMarks"
+			],
+			[
+				"group",
+				"groupSchema"
+			],
+			[
+				"q",
+				"question"
+			],
+			[
+				"e",
+				"erorResponse"
+			],
+			[
+				"fa",
+				"fadeOut〔function〕"
+			],
+			[
+				"sta",
+				"status"
+			],
+			[
+				"fin",
+				"findById"
+			],
+			[
+				"inter",
+				"interview〔argument〕"
+			],
+			[
+				"vari",
+				"variants"
+			],
+			[
+				"va",
+				"variants"
+			],
+			[
+				"s",
+				"stringify"
+			],
+			[
+				"cl",
+				"click〔function〕"
+			],
+			[
+				"des",
+				"description"
+			],
+			[
+				"val",
+				"value"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"b",
+				"baseDirectory"
+			],
+			[
+				"ob",
+				"object"
+			],
+			[
+				"get",
+				"getImages"
+			],
+			[
+				"j",
+				"jqForm"
+			],
+			[
+				"pa",
+				"parent〔function〕"
+			],
+			[
+				"fun",
+				"function〔keyword〕"
+			],
+			[
+				"er",
+				"errors"
+			],
+			[
+				"stat",
+				"stats"
+			],
+			[
+				"is",
+				"isIcan"
+			],
+			[
+				"c",
+				"currentUser"
+			],
+			[
+				"re",
+				"remove"
+			],
+			[
+				"su",
+				"subject_id"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
+				"has",
+				"hasClass〔function〕"
+			],
+			[
+				"a",
+				"ajax〔function〕"
+			],
+			[
+				"subj",
+				"subjects"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"save",
+				"saveBookIssue〔function〕"
+			],
+			[
+				"req",
+				"request〔variable〕"
+			],
+			[
+				"pro",
+				"promise〔variable〕"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"S",
+				"Statlog"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"ad",
+				"admin"
+			],
+			[
+				"l",
+				"log"
+			],
+			[
+				"h",
+				"hover"
+			],
+			[
+				"fon",
+				"font-family"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"background-",
+				"background-position"
+			],
+			[
+				"sc",
+				"script"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"",
+				"Hex Viewer: Toggle Hex View"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"ht",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"html",
+				"HTMLPrettify: Prettify"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/dima/Documents/GitHub/libstandart/views/clients/layout.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/interviews/iForm.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/interviews/qForm.jade",
+		"/Users/dima/Documents/GitHub/libstandart/routes/auth.js",
+		"/Users/dima/Documents/GitHub/libstandart/package.json",
+		"/Users/dima/Documents/GitHub/libstandart/routes/admin/users.js",
+		"/Users/dima/Documents/GitHub/libstandart/public/src/js/regions.js",
+		"/Users/dima/Documents/GitHub/libstandart/public/src/js/treeEdit.js",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/users/edit.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/users/add.jade",
+		"/Users/dima/Documents/GitHub/libstandart/public/src/styl/clients.styl",
+		"/Users/dima/Documents/GitHub/libstandart/views/adminLayout.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/interviews/vForm.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/mixins.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/clients/profile.jade",
+		"/Users/dima/Documents/GitHub/libstandart/routes/admin/utils.js",
+		"/Users/dima/Documents/GitHub/libstandart/public/src/styl/add.styl",
+		"/Users/dima/Documents/GitHub/libstandart/public/build/libs/js/jsTree/themes/default/style.min.css",
+		"/Users/dima/Documents/GitHub/libstandart/public/src/js/users.js",
+		"/Users/dima/Documents/GitHub/libstandart/public/src/js/results.js",
+		"/Users/dima/Documents/GitHub/libstandart/views/clients/results.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/layout.jade",
+		"/Users/dima/Documents/GitHub/libstandart/public/src/styl/global.styl",
+		"/Users/dima/Documents/GitHub/libstandart/public/src/styl/opinions.styl",
+		"/Users/dima/Documents/GitHub/libstandart/views/clients/index.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/clients/opinion.jade",
+		"/Users/dima/Documents/GitHub/libstandart/models/main.js",
+		"/Users/dima/Documents/GitHub/libstandart/routes/admin/opinion.js",
+		"/Users/dima/Documents/GitHub/libstandart/public/src/js/opinions.js",
+		"/Users/dima/Documents/GitHub/libstandart/routes/admin/acl.js",
+		"/Users/dima/Documents/GitHub/libstandart/routes/admin/interviews.js",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/regions/table.jade",
+		"/Users/dima/Documents/GitHub/libstandart/public/src/js/add.js",
+		"/Users/dima/Documents/GitHub/libstandart/public/build/libs/js/jsTree/themes/default/style.css",
+		"/Users/dima/Documents/GitHub/libstandart/public/src/js/profile.js",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/cl-index.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/login/index.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/layout2.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/login/cl-index.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/header.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/opinionLayout.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/opinion/index.jade",
+		"/Users/dima/Documents/GitHub/libstandart/README.md",
+		"/Users/dima/Documents/GitHub/libstandart/routes/admin/categorys.js",
+		"/Users/dima/Documents/GitHub/libstandart/routes/admin/regions.js",
+		"/Users/dima/Documents/GitHub/libstandart/app.js",
+		"/Users/dima/Documents/GitHub/libstandart/views/opinion/question.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/counters.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/opinion/quesion.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/frameLayout.jade",
+		"/Users/dima/Documents/GitHub/libstandart/public/src/js/interviewEdit.js",
+		"/Users/dima/Documents/GitHub/libstandart/routes/main.js",
+		"/Users/dima/Documents/NEL/q1.json",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/interviews/table.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/interviews/edit.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/categorys/add.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/regions/edit.jade",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/regions/add.jade",
+		"/Users/dima/Desktop/regions.js",
+		"/Users/dima/Documents/GitHub/libstandart/views/auth/index.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/index.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/uploadsMixins.jade",
+		"/Users/dima/Documents/GitHub/muar/public/build/libs/css/jquery.fileupload.css",
+		"/Users/dima/Documents/GitHub/muar/routes/admin/subjects.js",
+		"/Users/dima/Documents/GitHub/muar/public/uploads/55eebd98b35a32b14c4b83b9/55eebd9eb35a32b14c4b83bc.json",
+		"/Users/dima/Documents/GitHub/muar/public/uploads/55eebd98b35a32b14c4b83b9/55eebd9cb35a32b14c4b83ba.json",
+		"/Users/dima/Documents/GitHub/muar/public/uploads/55eebd98b35a32b14c4b83b9/55eebd9db35a32b14c4b83bb.json",
+		"/Users/dima/Documents/GitHub/muar/public/uploads/55cb404c1e9ef9040a5483b7/IMGP4958.JPG.json",
+		"/Users/dima/Documents/GitHub/muar/public/uploads/546b63315233a000009a6e0a/55dfe2afa0b3e9bd718a84c9.json",
+		"/Users/dima/Documents/GitHub/muar/public/src/js/upload-images.js",
+		"/Users/dima/Documents/GitHub/muar/public/uploads/546b63315233a000009a6e0a/55dfe2afa0b3e9bd718a84ca.json",
+		"/Users/dima/Documents/GitHub/muar/public/uploads/546b63315233a000009a6e0a/IMGP4995.JPG.json",
+		"/Users/dima/Documents/GitHub/muar/views/auth/objects/edit.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/objects/add.jade",
+		"/Users/dima/Documents/GitHub/muar/package.json",
+		"/Users/dima/Documents/GitHub/muar/public/src/js/upload.js",
+		"/Users/dima/Documents/GitHub/muar/views/auth/uploadsMixins",
+		"/Users/dima/Documents/GitHub/muar/routes/admin/uploadDelegate.js",
+		"/Users/dima/Documents/GitHub/muar/models/main.js",
+		"/Users/dima/Documents/GitHub/muar/public/src/js/uploadProgress.js",
+		"/Users/dima/Documents/GitHub/muar/views/auth/users/edit.jade",
+		"/Users/dima/Documents/GitHub/muar/routes/admin/acl.js",
+		"/Users/dima/Documents/GitHub/muar/views/layout.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/subjects/edit.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/projects/edit.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/subjects/add.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/mixins.jade",
+		"/Users/dima/Documents/GitHub/muar/public/src/styl/add.styl",
+		"/Users/dima/Documents/GitHub/news.cms/views/forms/editArticle.jade",
+		"/Users/dima/Documents/GitHub/news.cms/views/includes/header.jade",
+		"/Users/dima/Documents/GitHub/news.cms/static/js/forms.js",
+		"/Users/dima/Documents/GitHub/muar/public/fu/basic-plus.html",
+		"/Users/dima/Documents/GitHub/news.cms/node_modules/jquery-file-upload-middleware/README.md",
+		"/Users/dima/Documents/GitHub/muar/public/fu/index.html",
+		"/Users/dima/Documents/GitHub/muar/public/build/libs/js/jquery-ui-1.10.4.custom.min.js",
+		"/Users/dima/Documents/GitHub/news.cms/views/index.jade",
+		"/Users/dima/Documents/GitHub/news.cms/views/forms/editArticle.js",
+		"/Users/dima/Documents/GitHub/muar/views/auth/projects/add.jade",
+		"/Users/dima/Documents/GitHub/news.cms/views/includes/mixins.jade",
+		"/Users/dima/Downloads/jQuery-File-Upload-master/basic.html",
+		"/Users/dima/Documents/GitHub/muar/routes/admin/users.js",
+		"/Users/dima/Documents/GitHub/muar/routes/admin/projects.js",
+		"/Users/dima/Documents/GitHub/muar/routes/admin/objects.js",
+		"/Users/dima/Documents/GitHub/muar/routes/admin/categorys.js",
+		"/Users/dima/Documents/GitHub/muar/routes/admin/architects.js",
+		"/Users/dima/Documents/GitHub/muar/routes/admin/ages.js",
+		"/Users/dima/Documents/GitHub/muar/views/auth/categorys/edit.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/architects/edit.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/ages/edit.jade",
+		"/Users/dima/Documents/GitHub/muar/public/src/js/add.js",
+		"/Users/dima/Documents/GitHub/muar/views/auth/ages/table.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/architects/table.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/categorys/table.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/users/table.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/projects/table.jade",
+		"/Users/dima/Documents/GitHub/muar/views/adminLayout.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/objects/table.jade",
+		"/Users/dima/Documents/GitHub/muar/public/src/js/datatable.js",
+		"/Users/dima/Documents/GitHub/muar/public/src/styl/dataTables.styl",
+		"/Users/dima/Documents/GitHub/muar/views/auth/ages/add.jade",
+		"/Users/dima/Documents/GitHub/muar/routes/admin/utils.js",
+		"/Users/dima/Documents/GitHub/muar/views/auth/architects/add.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/categorys/add.jade",
+		"/Users/dima/Documents/GitHub/muar/app.js",
+		"/Users/dima/Documents/GitHub/muar/views/auth/users/add.jade",
+		"/Users/dima/Downloads/form-master/README.md",
+		"/Users/dima/Documents/GitHub/muar/views/auth/ages/index.jade",
+		"/Users/dima/Documents/GitHub/muar/views/auth/ages/index_sub.jade"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/Users/dima/Documents/GitHub/muar",
+			"/Users/dima/Documents/GitHub/muar/routes",
+			"/Users/dima/Documents/GitHub/muar",
+			"/Users/dima/Documents/GitHub/muar/*.js",
+			"/Users/dima/Documents/GitHub/muar",
+			"",
+			"languages",
+			"",
+			"touchstart:[({url:\"#back\"",
+			"url: \"#back\"",
+			"touchstart: [({url: \"#back\"",
+			"/Volumes/Share/ORANGE/МИТИНО ПАРК/EXPORT,*.html"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"q_fromPost",
+			"maxMarks",
+			"editor_vForm",
+			"border-bottom",
+			"console",
+			"remove",
+			"importCreateOne",
+			"jstree-clicked",
+			"variants",
+			": ",
+			"submi",
+			";",
+			": ",
+			"opinion",
+			"a_regions",
+			"children:",
+			"caption:",
+			"region:",
+			"eng",
+			"Category",
+			"category",
+			"categorys",
+			"loaded",
+			"info",
+			"fs.fileExistsSync",
+			"skip_auth",
+			"/auth/subj",
+			"/auth/subjec",
+			"uploadsList",
+			"markFileAsStoredWithUUID",
+			"articleEditorUploads",
+			"articleStopEditing",
+			"markFileAsStoredWithUUID",
+			"articleEditorUploadsCreate",
+			"articleEditorUploads",
+			"articleIdOrToken",
+			"methodOverride",
+			".ru",
+			"desc",
+			"caption",
+			"saveImageDescriptor",
+			"uuid",
+			"saveImageDescriptor",
+			"uuid",
+			"saveImageDescriptor",
+			".url",
+			"artcileId",
+			"meth",
+			"id",
+			"url",
+			".url",
+			"baseUrl",
+			"id",
+			"user_id",
+			"		var parentId= request.params.parentId || request.session.user_id.toString();;\nuser_id",
+			"user_id",
+			"options",
+			"__dirname",
+			"options",
+			"__uploader.ext",
+			"baseDirectory",
+			"__uploader.ext.baseDirectory",
+			"__baseDirectory",
+			"param",
+			"session.token",
+			"uploads",
+			"/auth/uploads",
+			"app",
+			"base",
+			"error",
+			"Image",
+			"commonRejectJSONHandler",
+			"commonRejectHandler",
+			"uploadBinaryContentResolveHandler",
+			"createObjectResolveHandler",
+			"Media",
+			"Image",
+			"Article",
+			"agent",
+			"Article",
+			"articleId",
+			"__baseUrl",
+			"__baseDirectory",
+			"Article",
+			"subjects",
+			"subject",
+			"siubject",
+			"image",
+			"_file_images",
+			"uploadIndex",
+			"modal_form_header",
+			"upload",
+			"/upload-binary-content",
+			"o",
+			".form-field",
+			"category",
+			"Architect",
+			"saveAgeWithParent(",
+			"agesaveAgeWithParent",
+			"saveAgeWithToParent",
+			"subData",
+			"hidden",
+			"project",
+			"object",
+			"name=",
+			".form_title ",
+			"', '",
+			"') ",
+			"option(value=",
+			".form_title ",
+			", name=",
+			".form_title ",
+			"readonly",
+			"form-field",
+			", value=",
+			"name=",
+			"(type=\"text\"",
+			"    ",
+			"/n    ",
+			"    ",
+			"key",
+			"    ",
+			";",
+			":",
+			"}",
+			"{",
+			".form-field",
+			"field"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			" ",
+			"",
+			" ",
+			"\"children\":",
+			"\"caption\":",
+			"\"region\":",
+			"Region",
+			"region",
+			"regions",
+			"uploadsRemove",
+			"parentIdOrToken",
+			"info",
+			"parentId",
+			"options",
+			"__baseDirectory",
+			"__uploader.ext.baseDirectory",
+			"parentId",
+			"__uploader.ext.baseUrl",
+			"__uploader.ext.baseDirectory",
+			"saveAgeWithParent(req, res,",
+			"saveAgeWithParent",
+			"agesaveAgeWithParent",
+			"age",
+			"project",
+			"name:",
+			"+_text({\"title\":\"",
+			"': '",
+			"', '",
+			"",
+			"+_text({\"title\": \"",
+			", \"name\":",
+			"+_text({\"title\":\"",
+			", \"value\":",
+			"\"name\":",
+			"	",
+			"/n	",
+			"	",
+			"div",
+			"	",
+			" /t",
+			" ",
+			"",
+			"div",
+			"Obj",
+			"user",
+			"cser",
+			"User",
+			"\\t",
+			"\"\"",
+			"\"",
+			"eventName",
+			"links",
+			"/admin",
+			"link",
+			"links",
+			"categories",
+			"CATEGORIES_URL_PREFIX",
+			"LOGIN_URL",
+			"auth.",
+			"category.",
+			"/EBL/reader/",
+			"reader/",
+			"",
+			"var",
+			"languages",
+			"touchstart:[({url:\"#back\"",
+			"looppedSwitching:true",
+			"Test"
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 370.0
+	},
+	"output.hex_viewer_inspector":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 260.0,
+	"status_bar_visible": true
+}

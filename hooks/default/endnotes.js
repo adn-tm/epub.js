@@ -1,4 +1,4 @@
-EPUBJS.Hooks.register("beforeChapterDisplay").endnotes = function(callback, renderer){
+/* EPUBJS.Hooks.register("beforeChapterDisplay").endnotes = function(callback, renderer){
 
 		var notes = renderer.contents.querySelectorAll('a[href]'),
 			items = Array.prototype.slice.call(notes), //[].slice.call()
@@ -28,6 +28,7 @@ EPUBJS.Hooks.register("beforeChapterDisplay").endnotes = function(callback, rend
 			id = href.replace("#", '');
 			el = renderer.render.document.getElementById(id);
 
+			console.log(item.innerText, ":", href);  
 
 			item.addEventListener("mouseover", showPop, false);
 			item.addEventListener("mouseout", hidePop, false);
@@ -110,7 +111,7 @@ EPUBJS.Hooks.register("beforeChapterDisplay").endnotes = function(callback, rend
 				if(left - popRect.width <= 0) {
 					pop.style.left = left + "px";
 					pop.classList.add("left");
-				}else{
+				}else{x
 					pop.classList.remove("left");
 				}
 
@@ -157,3 +158,4 @@ EPUBJS.Hooks.register("beforeChapterDisplay").endnotes = function(callback, rend
 		if(callback) callback();
 
 }
+*/

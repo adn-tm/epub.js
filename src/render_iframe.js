@@ -43,6 +43,11 @@ EPUBJS.Render.Iframe.prototype.load = function(contents, url){
 		var title;
 
 		render.document = render.iframe.contentDocument;
+		/*
+		var html=render.document.getElementsByTagName("html")[0];
+		if (html) 
+			html.setAttribute("lang", render.book.metadata.language?render.book.metadata.language:"RU");
+		*/
 		render.docEl = render.document.documentElement;
 		render.headEl = render.document.head;
 		render.bodyEl = render.document.body || render.document.querySelector("body");

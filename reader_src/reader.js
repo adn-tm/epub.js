@@ -91,6 +91,7 @@ EPUBJS.Reader = function(bookPath, _options) {
 	reader.SidebarController = EPUBJS.reader.SidebarController.call(reader, book);
 	reader.BookmarksController = EPUBJS.reader.BookmarksController.call(reader, book);
 	reader.NotesController = EPUBJS.reader.NotesController.call(reader, book);
+	reader.FootnoteController = EPUBJS.reader.FootnoteController.call(reader, book);
 
 	// Call Plugins
 	for(plugin in EPUBJS.reader.plugins) {

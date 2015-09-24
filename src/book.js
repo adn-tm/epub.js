@@ -92,6 +92,7 @@ EPUBJS.Book = function(options){
 	* The renderer will handle displaying the content using the method provided in the settings
 	*/
 	this.renderer = new EPUBJS.Renderer(this.settings.render_method);
+	this.renderer.book = this;
 	//-- Set the width at which to switch from spreads to single pages
 	this.renderer.setMinSpreadWidth(this.settings.minSpreadWidth);
 	this.renderer.setGap(this.settings.gap);
@@ -204,7 +205,7 @@ EPUBJS.Book.prototype.loadPackage = function(_containerPath){
 		console.error("Could not load book at: "+ containerPath);
 		book.trigger("book:loadFailed", containerPath);
 	});
-	return packageXml;
+	return packageXml; 
 };
 
 EPUBJS.Book.prototype.packageIdentifier = function(packageXml){

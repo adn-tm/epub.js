@@ -91,6 +91,7 @@ EPUBJS.Reader = function(bookPath, _options) {
 	reader.SidebarController = EPUBJS.reader.SidebarController.call(reader, book);
 	reader.BookmarksController = EPUBJS.reader.BookmarksController.call(reader, book);
 	reader.NotesController = EPUBJS.reader.NotesController.call(reader, book);
+	reader.FootnoteController = EPUBJS.reader.FootnoteController.call(reader, book);
 
 	// Call Plugins
 	for(plugin in EPUBJS.reader.plugins) {
@@ -335,6 +336,23 @@ EPUBJS.reader.BookmarksController = function() {
 	
 	var counter = 0;
 	
+	var getBookmarkCaption = function(cfi, maxLength) {
+		if (!maxLength)
+				maxLength = 100;
+		var epubcfi =new EPUBJS.EpubCFI();
+		var a=epubcfi.generateRangeFromCfi(cfi, reader.book.renderer.doc);
+		if (a) {
+			var text=a.toString();
+			
+			if (text.length>maxLength) {
+				text = text.substr(0, maxLength)+"...";
+			} else if (text.length<20) {
+			// TODO: cut some characters from next element	
+			}
+		} else text=cfi; 
+		return text;
+	}
+
 	var createBookmarkItem = function(cfi) {
 		var listitem = document.createElement("li"),
 				link = document.createElement("a");
@@ -343,7 +361,7 @@ EPUBJS.reader.BookmarksController = function() {
 		listitem.classList.add('list_item');
 		
 		//-- TODO: Parse Cfi
-		link.textContent = cfi;
+		link.textContent = getBookmarkCaption(cfi); // cfi;
 		link.href = cfi;
 
 		link.classList.add('bookmark_link');
@@ -498,10 +516,103 @@ EPUBJS.reader.ControlsController = function(book) {
 	};
 };
 
+EPUBJS.reader.FootnoteController = function(toc) {
+	var reader = this;
+	var book = this.book;	
+	var footnoteFrame = $("#footnoteView");
+	var footnoteClose = $("#footnoteClose");
+	var isShown = false;
+	var ANIMATION_DURATION = 400;
+	if (!footnoteFrame)
+		return ({}); 
+	
+	function hideFootnote() {
+		if (!footnoteFrame)
+			return;
+		if (!isShown)
+			return;
+		isShown = false;
+		footnoteFrame.fadeOut(ANIMATION_DURATION);
+	} 
+	
+	$(window).on("click touchstart", function() { 
+		if (isShown)
+			hideFootnote(); 
+	}, false);
+	
+	book.on("renderer:click", hideFootnote);
+	book.on("renderer:touchstart", hideFootnote);
+	
+//	footnoteFrame.on("click touchstart", hideFootnote, false);
+/*	footnoteClose.on("click touchstart", function() { 
+			if (isShown)
+				hideFootnote(); 
+	}, false);
+*/
+
+	function showFootnote(event, textNode) {
+		if (!footnoteFrame || !textNode)
+				return;
+		event.preventDefault();
+		if (event.stopPropagation)    event.stopPropagation();
+		if (event.cancelBubble!=null) event.cancelBubble = true;
+			
+		var x = event.clientX + window.scrollX;
+		var y = event.clientY + window.scrollY+event.srcElement.offsetHeight;
+		var clonedText = $(textNode).clone();
+		var wrapper = $('<div id="footNodeWrapper"></div>');
+		wrapper.append(clonedText);
+		footnoteFrame.empty();
+		footnoteFrame.append(wrapper);
+		footnoteFrame.css({ top: y+"px", left: x+"px"});
+		footnoteFrame.fadeIn({duration:ANIMATION_DURATION, complete:function(){ isShown = true; } });
+		
+	}
+	
+	
+
+	book.on('renderer:locationChanged', function(cfi){
+		hideFootnote();
+	});
+	
+	book.on("renderer:showFootnote", function(event) {
+	
+		console.log("show footnote with event");
+		console.log(event);
+		if (!event) return;
+		if (!event.srcElement) return;
+		var hash = event.srcElement.hash;
+		
+		if (!hash)
+				return false;
+		if (hash.indexOf("#")!=0) 
+			return false;
+		var targetLink = book.renderer.doc.getElementById(hash.substr(1));
+		if (!targetLink) 
+			return false;
+		var node = targetLink;
+		var text = node.innerText;
+			while (!text && node) {
+				node = node.parentNode;
+				text = node.innerText;
+			}
+		if (text && node) {
+			console.log("FootNote text is:"+text);
+			showFootnote(event, node);
+						
+		};
+	});
+	
+	return {
+		"show" : showFootnote,
+		"hide" : hideFootnote
+	};
+};
+
 EPUBJS.reader.MetaController = function(meta) {
 	var title = meta.bookTitle,
-			author = meta.creator;
-
+		author = meta.creator,
+		lang = meta.language
 	var $title = $("#book-title"),
 			$author = $("#chapter-title"),
 			$dash = $("#title-seperator");
@@ -511,7 +622,21 @@ EPUBJS.reader.MetaController = function(meta) {
 		$title.html(title);
 		$author.html(author);
 		$dash.show();
+
+		if (lang)
+			this.book.renderer.registerHook("beforeChapterDisplay", function(callback, renderer){
+				if (renderer.doc) {
+					var html = renderer.doc.getElementsByTagName("html")[0];
+					if (html) 
+						html.setAttribute("lang", lang?lang:"ru");
+				}
+				callback();
+			}, true);
+
+
 };
+
+
 EPUBJS.reader.NotesController = function() {
 	var book = this.book;
 	var reader = this;
@@ -945,8 +1070,21 @@ EPUBJS.reader.ReaderController = function(book) {
 	};
 };
 EPUBJS.reader.SettingsController = function() {
+	var FONTS={"Serif":"PT Serif", "Sans":"PT Sans"};
 	var book = this.book;
 	var reader = this;
+	var settings=(window.localStorage?window.localStorage.getItem('settings'):undefined);
+	if (!settings) {
+			settings={
+				fontScale:100,
+				fontName:"PT Serif",
+				color:"black",
+				background:"white"
+			};
+		if (window.localStorage)
+				window.localStorage.setItem('settings', settings);
+	};
+
 	var $settings = $("#settings-modal"),
 			$overlay = $(".overlay");
 
@@ -960,17 +1098,50 @@ EPUBJS.reader.SettingsController = function() {
 
 	var $sidebarReflowSetting = $('#sidebarReflow');
 
+	$settings.append("<div id='settings-color' class='settings-label'>Цвет текста:<div class='colorPicker'></div></div>");
+	$settings.append("<div id='settings-background'  class='settings-label'>Цвет фона:<div class='colorPicker'></div></div>");
+
+	$(".colorPicker").ColorPicker({flat: true});
+
 	$sidebarReflowSetting.on('click', function() {
 		reader.settings.sidebarReflow = !reader.settings.sidebarReflow;
 	});
 
 	$settings.find(".closer").on("click", function() {
+		applySettings();
 		hide();
 	});
 
 	$overlay.on("click", function() {
+		applySettings();
 		hide();
 	});
+	var applySettings = function() {
+		book.renderer.setStyle("font-size", settings.fontScale+"%");
+		book.renderer.setStyle("font-family", settings.fontName);
+		book.renderer.setStyle("color", settings.color);
+		book.renderer.setStyle("background-color", settings.background);
+		if (window.localStorage)
+				window.localStorage.setItem('settings', settings);
+	}
+	book.renderer.registerHook("beforeChapterDisplay", function(callback, renderer){
+		 var path = window.location.origin + window.location.pathname;
+		
+			path=path.split("/");
+			path.pop(); path.pop();
+			path = path.join("/"); 
+			renderer.applyHeadTags({
+				'link':{'rel':'stylesheet', 'href':path+'/reader/css/user-settings.css'}
+			});
+			renderer.applyHeadTags({
+				'link':{'rel':'stylesheet', 'href':path+'/reader/css/fonts/fonts.css'}
+			});
+			
+		
+		callback();
+	}, true);
+
+
 
 	return {
 		"show" : show,

@@ -17,6 +17,23 @@ EPUBJS.reader.BookmarksController = function() {
 	
 	var counter = 0;
 	
+	var getBookmarkCaption = function(cfi, maxLength) {
+		if (!maxLength)
+				maxLength = 100;
+		var epubcfi =new EPUBJS.EpubCFI();
+		var a=epubcfi.generateRangeFromCfi(cfi, reader.book.renderer.doc);
+		if (a) {
+			var text=a.toString();
+			
+			if (text.length>maxLength) {
+				text = text.substr(0, maxLength)+"...";
+			} else if (text.length<20) {
+			// TODO: cut some characters from next element	
+			}
+		} else text=cfi; 
+		return text;
+	}
+
 	var createBookmarkItem = function(cfi) {
 		var listitem = document.createElement("li"),
 				link = document.createElement("a");
@@ -25,7 +42,7 @@ EPUBJS.reader.BookmarksController = function() {
 		listitem.classList.add('list_item');
 		
 		//-- TODO: Parse Cfi
-		link.textContent = cfi;
+		link.textContent = getBookmarkCaption(cfi); // cfi;
 		link.href = cfi;
 
 		link.classList.add('bookmark_link');
