@@ -1,19 +1,27 @@
 EPUBJS.reader.SettingsController = function() {
 	var FONTS={"Serif":"PT Serif", "Sans":"PT Sans"};
 	var book = this.book;
-	var reader = this;
-	var settings=(window.localStorage?window.localStorage.getItem('settings'):undefined);
-	if (!settings) {
-			settings={
-				fontScale:100,
-				fontName:"PT Serif",
-				color:"black",
-				background:"white"
-			};
-		if (window.localStorage)
-				window.localStorage.setItem('settings', settings);
-	};
 
+	var reader = this;
+	var DEFAULT_SETTINGS={
+				fontSize:12,
+				fontName:"FiraSans",
+				color:"101010",
+				background:"FFFFFF"
+			};
+	var settings=(window.localStorage?JSON.parse(window.localStorage.getItem('settings')):undefined);
+	if (!settings) {
+			settings=DEFAULT_SETTINGS
+
+		if (window.localStorage)
+				window.localStorage.setItem('settings', JSON.stringify(settings) );
+	};
+	for(var key in DEFAULT_SETTINGS) {
+		settings[key] = settings[key] || DEFAULT_SETTINGS[key];	
+	}
+
+	book.settings.styles=settings;
+	
 	var $settings = $("#settings-modal"),
 			$overlay = $(".overlay");
 
@@ -24,13 +32,28 @@ EPUBJS.reader.SettingsController = function() {
 	var hide = function() {
 		$settings.removeClass("md-show");
 	};
+			
 
 	var $sidebarReflowSetting = $('#sidebarReflow');
 
-	$settings.append("<div id='settings-color' class='settings-label'>Цвет текста:<div class='colorPicker'></div></div>");
-	$settings.append("<div id='settings-background'  class='settings-label'>Цвет фона:<div class='colorPicker'></div></div>");
+ 	$("#textColorPicker").css('background-color', '#'+settings.color).ColorPicker({
+		color: '#'+settings.color,
+		onChange: function (hsb, hex, rgb) {
+			settings.color=hex;
+			book.renderer.setStyle("color", '#'+settings.color);
+			$('#textColorPicker').css('backgroundColor', '#' + hex);
+		}
+	});
 
-	$(".colorPicker").ColorPicker({flat: true});
+ 	$("#backgroundColorPicker").css('background-color', '#'+settings.background).ColorPicker({
+		color: '#'+settings.background,
+		onChange: function (hsb, hex, rgb) {
+			settings.background = hex;
+			//	book.renderer.setStyle("background-color", '#' +settings.background);
+			$("#main").css('backgroundColor', '#' + settings.background);
+			$('#backgroundColorPicker').css('backgroundColor', '#' + hex);
+		}
+	});
 
 	$sidebarReflowSetting.on('click', function() {
 		reader.settings.sidebarReflow = !reader.settings.sidebarReflow;
@@ -45,13 +68,38 @@ EPUBJS.reader.SettingsController = function() {
 		applySettings();
 		hide();
 	});
+
+
+      $('#settings-fontsize').val(settings.fontSize);
+      $('#settings-font-'+settings.fontName).addClass("selected");
+
+      $('#settings-fontsize-minus').on('click', function(){
+      	if (settings.fontSize<6)
+      		return;
+      	settings.fontSize-=1;
+      	$('#settings-fontsize').val(settings.fontSize);
+      });
+      $('#settings-fontsize-plus').on('click', function(){
+      	if (settings.fontSize>40)
+      		return;
+      	settings.fontSize+=1;
+      	$('#settings-fontsize').val(settings.fontSize);
+      });
+
+      $('#settings-font-FiraSans,#settings-font-PTSans,#settings-font-PTSerif').on('click', function(){
+      	settings.fontName=this.id.split('-').pop();
+      	$('#settings-font-FiraSans,#settings-font-PTSans,#settings-font-PTSerif').removeClass("selected");
+      	$(this).addClass("selected");
+      }); 
+
+
 	var applySettings = function() {
-		book.renderer.setStyle("font-size", settings.fontScale+"%");
+		book.renderer.setStyle("fontSize", settings.fontSize+"pt");
 		book.renderer.setStyle("font-family", settings.fontName);
-		book.renderer.setStyle("color", settings.color);
-		book.renderer.setStyle("background-color", settings.background);
+		book.renderer.setStyle("color", '#'+settings.color);
+		$("#main").css('backgroundColor', '#' + settings.background);
 		if (window.localStorage)
-				window.localStorage.setItem('settings', settings);
+				window.localStorage.setItem('settings', JSON.stringify(settings) );
 	}
 	book.renderer.registerHook("beforeChapterDisplay", function(callback, renderer){
 		 var path = window.location.origin + window.location.pathname;
@@ -59,6 +107,7 @@ EPUBJS.reader.SettingsController = function() {
 			path=path.split("/");
 			path.pop(); path.pop();
 			path = path.join("/"); 
+			applySettings();
 			renderer.applyHeadTags({
 				'link':{'rel':'stylesheet', 'href':path+'/reader/css/user-settings.css'}
 			});
@@ -71,6 +120,7 @@ EPUBJS.reader.SettingsController = function() {
 	}, true);
 
 
+	// applySettings();
 
 	return {
 		"show" : show,

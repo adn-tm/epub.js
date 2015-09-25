@@ -47,7 +47,7 @@ body {
   position: relative;
   color: #4f4f4f;
   font-weight: 100;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: FiraSans, Georgia, "Times New Roman", Times, serif;
   opacity: .5;
   text-align: center;
   -webkit-transition: opacity .5s;
@@ -128,7 +128,7 @@ body {
   margin-top: -32px;
   font-size: 64px;
   color: #E2E2E2;
-  font-family: arial, sans-serif;
+  font-family:  FiraSans, arial, sans-serif;
   font-weight: bold;
   cursor: pointer;
   -webkit-user-select: none;
@@ -331,7 +331,7 @@ input:-ms-placeholder {
 
 #tocView > ul,
 #bookmarksView > ul {
-  margin-top: 15px;
+  margin-top: 4em;
   margin-bottom: 50px;
   padding-left: 20px;
   display: block;
@@ -340,9 +340,18 @@ input:-ms-placeholder {
 #tocView li,
 #bookmarksView li {
   margin-bottom:10px;
+  padding-bottom: 5px;
   width: 225px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family:  FiraSans, Georgia, "Times New Roman", Times, serif;
   list-style: none;
+  line-height:1em;
+  border-bottom: 1px solid #AAA;
+
+}
+
+.bookmark_link, .toc_link {
+  font-size: 10pt;
+  font-weight: 100;
 }
 
 #tocView li:active,
@@ -427,7 +436,7 @@ input:-ms-placeholder {
 #searchResults li {
   margin-bottom:10px;
   width: 225px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family:  FiraSans, Georgia, "Times New Roman", Times, serif;
   list-style: none;
 }
 
@@ -511,7 +520,7 @@ input:-ms-placeholder {
 
 #settingsPanel h3 {
   color:#f1f1f1;
-  font-family:Georgia, "Times New Roman", Times, serif;
+  font-family: FiraSans, Georgia, "Times New Roman", Times, serif;
   margin-bottom:10px;
 }
 
@@ -841,3 +850,67 @@ input:-ms-placeholder {
   hyphens: none;
   font-size:12pt;
 }
+.settings-field {
+  font-family: FiraSans;
+}
+
+.settings-field > div  {
+    display:inline-block;
+    height:20px;
+    font-size:10pt;
+    font-family: FiraSans;
+    font-weight: 100;
+}
+
+.settings-field div.button:hover {
+  box-shadow:0px 0px 10px white;
+}
+.settings-field > input {
+  background-color: transparent;
+  text-align: center;
+  border:none;
+  width:40px;
+  display:inline-block;
+  height:22px;  
+  color:white;
+}
+
+.settings-label {
+    display:inline-block;
+    width: 120px;
+    margin-right: 5px;
+    height: 20px;
+    padding-bottom: 5px;
+}
+
+.button {
+    border: 1px solid white;
+    outline: 1px solid gray;
+    border: 1px solid white;
+    outline: 1px solid gray;
+    padding:2px;
+    text-align: center;
+}
+
+.settings-field .small {
+    width:20px;
+}
+
+ .sans {
+     width:120px !important;
+     font-family: 'PTSans';
+ }
+
+.seriff {
+     width:120px !important;
+     font-family: 'PTSerif';
+ }
+
+ .fira {
+     width:120px !important;
+     font-family: 'FiraSans';
+ }
+
+ .settings-field > .selected {
+    background-color: #999;
+ }

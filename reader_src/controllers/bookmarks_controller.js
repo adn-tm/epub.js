@@ -16,7 +16,7 @@ EPUBJS.reader.BookmarksController = function() {
 	};
 	
 	var counter = 0;
-	
+/*	
 	var getBookmarkCaption = function(cfi, maxLength) {
 		if (!maxLength)
 				maxLength = 100;
@@ -33,8 +33,8 @@ EPUBJS.reader.BookmarksController = function() {
 		} else text=cfi; 
 		return text;
 	}
-
-	var createBookmarkItem = function(cfi) {
+*/
+	var createBookmarkItem = function(bm) {
 		var listitem = document.createElement("li"),
 				link = document.createElement("a");
 		
@@ -42,8 +42,8 @@ EPUBJS.reader.BookmarksController = function() {
 		listitem.classList.add('list_item');
 		
 		//-- TODO: Parse Cfi
-		link.textContent = getBookmarkCaption(cfi); // cfi;
-		link.href = cfi;
+		link.textContent = bm.text || ""; // getBookmarkCaption(cfi); // cfi;
+		link.href = bm.cfi;
 
 		link.classList.add('bookmark_link');
 		
@@ -60,15 +60,15 @@ EPUBJS.reader.BookmarksController = function() {
 		return listitem;
 	};
 
-	this.settings.bookmarks.forEach(function(cfi) { 
-		var bookmark = createBookmarkItem(cfi);
+	this.settings.bookmarks.forEach(function(bm) { 
+		var bookmark = createBookmarkItem(bm);
 		docfrag.appendChild(bookmark);
 	});
 	
 	$list.append(docfrag);
 	
-	this.on("reader:bookmarked", function(cfi) {
-		var item = createBookmarkItem(cfi);
+	this.on("reader:bookmarked", function(bm) {
+		var item = createBookmarkItem(bm);
 		$list.append(item);
 	});
 	

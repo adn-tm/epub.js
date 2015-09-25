@@ -62,6 +62,7 @@ EPUBJS.reader.ControlsController = function(book) {
 		reader.SettingsController.show();
 	});
 
+
 	$bookmark.on("click", function() {
 		var cfi = reader.book.getCurrentLocationCfi();
 		var bookmarked = reader.isBookmarked(cfi);

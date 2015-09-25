@@ -10,8 +10,10 @@
 
         <link rel="stylesheet" href="../reader/css/normalize.css">
         <link rel="stylesheet" href="../reader/css/main.css">
+        <link rel="stylesheet" href="../reader/css/fonts/fonts.css">
         <script src="../reader/js/libs/jquery-2.1.0.min.js"></script>
         <script type="text/javascript" src="../reader/js/libs/colorpicker.js"></script>
+        <link rel="stylesheet" href="../reader/css/colorpicker.css" type="text/css" />
         <script>
             "use strict";
 
@@ -119,6 +121,27 @@
           <div class="md-content">
               <h3>Настройки</h3>
               <div>
+                <div class='settings-field'>
+                    <div class='settings-label'>Цвет текста:</div>
+                    <div id='textColorPicker' class='small button'></div>
+                </div>
+                <div class='settings-field'>
+                  <div  class='settings-label'>Цвет фона:</div>
+                  <div  id='backgroundColorPicker'  class='small button'></div>
+                </div>
+                <div class='settings-field'>
+                  <div class='settings-label'>Размер текста</div>
+                  <div  id='settings-fontsize-minus'  class='small button'>-</div>
+                  <input id='settings-fontsize' readonly="readonly" value="100"/><div>пт&nbsp;</div>
+                  <div  id='settings-fontsize-plus'  class='small button'>+</div>
+                </div>
+                <div class='settings-field'>
+                  <div class='settings-label'>Начертание текста</div>
+                  <div  id='settings-font-FiraSans'  class='button fira'>Fira Sans</div>
+                  <div  id='settings-font-PTSans'  class='button sans'>Sans</div>
+                  <div  id='settings-font-PTSerif'  class='button seriff'>Seriff</div>
+                  
+                </div>
               </div>
               <div class="closer icon-cancel-circled"></div>
           </div>

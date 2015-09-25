@@ -1302,6 +1302,8 @@ EPUBJS.Book.prototype.parseLayoutProperties = function(metadata){
 	};
 };
 
+
+
 //-- Enable binding events to book
 RSVP.EventTarget.mixin(EPUBJS.Book.prototype);
 

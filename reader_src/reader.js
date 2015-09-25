@@ -160,16 +160,35 @@ EPUBJS.Reader.prototype.adjustFontSize = function(e) {
 	}
 };
 
+EPUBJS.Reader.prototype.getBookmarkCaption = function(cfi, maxLength) {
+		if (!maxLength)
+				maxLength = 100;
+		var epubcfi =new EPUBJS.EpubCFI();
+		var a=epubcfi.generateRangeFromCfi(cfi, this.book.renderer.doc);
+		if (a) {
+			var text=a.toString();
+			
+			if (text.length>maxLength) {
+				text = text.substr(0, maxLength)+"...";
+			} else if (text.length<20) {
+			// TODO: cut some characters from next element	
+			}
+		} else text=cfi; 
+		return text;
+	}
+
 EPUBJS.Reader.prototype.addBookmark = function(cfi) {
 	var present = this.isBookmarked(cfi);
 	if(present > -1 ) return;
+	var bm = {cfi:cfi, text:this.getBookmarkCaption(cfi)};
+	this.settings.bookmarks.push(bm);
 
-	this.settings.bookmarks.push(cfi);
-
-	this.trigger("reader:bookmarked", cfi);
+	this.trigger("reader:bookmarked", bm);
 };
 
 EPUBJS.Reader.prototype.removeBookmark = function(cfi) {
+	if ('cfi' in cfi)
+			cfi=cfi.cfi;
 	var bookmark = this.isBookmarked(cfi);
 	if( bookmark === -1 ) return;
 
@@ -180,8 +199,11 @@ EPUBJS.Reader.prototype.removeBookmark = function(cfi) {
 
 EPUBJS.Reader.prototype.isBookmarked = function(cfi) {
 	var bookmarks = this.settings.bookmarks;
-
-	return bookmarks.indexOf(cfi);
+	for(var i=0; i<bookmarks.length; i++) {
+		if (bookmarks[i].cfi==cfi)
+			return i;
+	}
+	return -1; // bookmarks.indexOf(cfi);
 };
 
 /*

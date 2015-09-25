@@ -160,16 +160,35 @@ EPUBJS.Reader.prototype.adjustFontSize = function(e) {
 	}
 };
 
+EPUBJS.Reader.prototype.getBookmarkCaption = function(cfi, maxLength) {
+		if (!maxLength)
+				maxLength = 100;
+		var epubcfi =new EPUBJS.EpubCFI();
+		var a=epubcfi.generateRangeFromCfi(cfi, this.book.renderer.doc);
+		if (a) {
+			var text=a.toString();
+			
+			if (text.length>maxLength) {
+				text = text.substr(0, maxLength)+"...";
+			} else if (text.length<20) {
+			// TODO: cut some characters from next element	
+			}
+		} else text=cfi; 
+		return text;
+	}
+
 EPUBJS.Reader.prototype.addBookmark = function(cfi) {
 	var present = this.isBookmarked(cfi);
 	if(present > -1 ) return;
+	var bm = {cfi:cfi, text:this.getBookmarkCaption(cfi)};
+	this.settings.bookmarks.push(bm);
 
-	this.settings.bookmarks.push(cfi);
-
-	this.trigger("reader:bookmarked", cfi);
+	this.trigger("reader:bookmarked", bm);
 };
 
 EPUBJS.Reader.prototype.removeBookmark = function(cfi) {
+	if ('cfi' in cfi)
+			cfi=cfi.cfi;
 	var bookmark = this.isBookmarked(cfi);
 	if( bookmark === -1 ) return;
 
@@ -180,8 +199,11 @@ EPUBJS.Reader.prototype.removeBookmark = function(cfi) {
 
 EPUBJS.Reader.prototype.isBookmarked = function(cfi) {
 	var bookmarks = this.settings.bookmarks;
-
-	return bookmarks.indexOf(cfi);
+	for(var i=0; i<bookmarks.length; i++) {
+		if (bookmarks[i].cfi==cfi)
+			return i;
+	}
+	return -1; // bookmarks.indexOf(cfi);
 };
 
 /*
@@ -335,7 +357,7 @@ EPUBJS.reader.BookmarksController = function() {
 	};
 	
 	var counter = 0;
-	
+/*	
 	var getBookmarkCaption = function(cfi, maxLength) {
 		if (!maxLength)
 				maxLength = 100;
@@ -352,8 +374,8 @@ EPUBJS.reader.BookmarksController = function() {
 		} else text=cfi; 
 		return text;
 	}
-
-	var createBookmarkItem = function(cfi) {
+*/
+	var createBookmarkItem = function(bm) {
 		var listitem = document.createElement("li"),
 				link = document.createElement("a");
 		
@@ -361,8 +383,8 @@ EPUBJS.reader.BookmarksController = function() {
 		listitem.classList.add('list_item');
 		
 		//-- TODO: Parse Cfi
-		link.textContent = getBookmarkCaption(cfi); // cfi;
-		link.href = cfi;
+		link.textContent = bm.text || ""; // getBookmarkCaption(cfi); // cfi;
+		link.href = bm.cfi;
 
 		link.classList.add('bookmark_link');
 		
@@ -379,15 +401,15 @@ EPUBJS.reader.BookmarksController = function() {
 		return listitem;
 	};
 
-	this.settings.bookmarks.forEach(function(cfi) { 
-		var bookmark = createBookmarkItem(cfi);
+	this.settings.bookmarks.forEach(function(bm) { 
+		var bookmark = createBookmarkItem(bm);
 		docfrag.appendChild(bookmark);
 	});
 	
 	$list.append(docfrag);
 	
-	this.on("reader:bookmarked", function(cfi) {
-		var item = createBookmarkItem(cfi);
+	this.on("reader:bookmarked", function(bm) {
+		var item = createBookmarkItem(bm);
 		$list.append(item);
 	});
 	
@@ -464,6 +486,7 @@ EPUBJS.reader.ControlsController = function(book) {
 	$settings.on("click", function() {
 		reader.SettingsController.show();
 	});
+
 
 	$bookmark.on("click", function() {
 		var cfi = reader.book.getCurrentLocationCfi();
@@ -1072,19 +1095,27 @@ EPUBJS.reader.ReaderController = function(book) {
 EPUBJS.reader.SettingsController = function() {
 	var FONTS={"Serif":"PT Serif", "Sans":"PT Sans"};
 	var book = this.book;
-	var reader = this;
-	var settings=(window.localStorage?window.localStorage.getItem('settings'):undefined);
-	if (!settings) {
-			settings={
-				fontScale:100,
-				fontName:"PT Serif",
-				color:"black",
-				background:"white"
-			};
-		if (window.localStorage)
-				window.localStorage.setItem('settings', settings);
-	};
 
+	var reader = this;
+	var DEFAULT_SETTINGS={
+				fontSize:12,
+				fontName:"FiraSans",
+				color:"101010",
+				background:"FFFFFF"
+			};
+	var settings=(window.localStorage?JSON.parse(window.localStorage.getItem('settings')):undefined);
+	if (!settings) {
+			settings=DEFAULT_SETTINGS
+
+		if (window.localStorage)
+				window.localStorage.setItem('settings', JSON.stringify(settings) );
+	};
+	for(var key in DEFAULT_SETTINGS) {
+		settings[key] = settings[key] || DEFAULT_SETTINGS[key];	
+	}
+
+	book.settings.styles=settings;
+	
 	var $settings = $("#settings-modal"),
 			$overlay = $(".overlay");
 
@@ -1095,13 +1126,28 @@ EPUBJS.reader.SettingsController = function() {
 	var hide = function() {
 		$settings.removeClass("md-show");
 	};
+			
 
 	var $sidebarReflowSetting = $('#sidebarReflow');
 
-	$settings.append("<div id='settings-color' class='settings-label'>Цвет текста:<div class='colorPicker'></div></div>");
-	$settings.append("<div id='settings-background'  class='settings-label'>Цвет фона:<div class='colorPicker'></div></div>");
+ 	$("#textColorPicker").css('background-color', '#'+settings.color).ColorPicker({
+		color: '#'+settings.color,
+		onChange: function (hsb, hex, rgb) {
+			settings.color=hex;
+			book.renderer.setStyle("color", '#'+settings.color);
+			$('#textColorPicker').css('backgroundColor', '#' + hex);
+		}
+	});
 
-	$(".colorPicker").ColorPicker({flat: true});
+ 	$("#backgroundColorPicker").css('background-color', '#'+settings.background).ColorPicker({
+		color: '#'+settings.background,
+		onChange: function (hsb, hex, rgb) {
+			settings.background = hex;
+			//	book.renderer.setStyle("background-color", '#' +settings.background);
+			$("#main").css('backgroundColor', '#' + settings.background);
+			$('#backgroundColorPicker').css('backgroundColor', '#' + hex);
+		}
+	});
 
 	$sidebarReflowSetting.on('click', function() {
 		reader.settings.sidebarReflow = !reader.settings.sidebarReflow;
@@ -1116,13 +1162,38 @@ EPUBJS.reader.SettingsController = function() {
 		applySettings();
 		hide();
 	});
+
+
+      $('#settings-fontsize').val(settings.fontSize);
+      $('#settings-font-'+settings.fontName).addClass("selected");
+
+      $('#settings-fontsize-minus').on('click', function(){
+      	if (settings.fontSize<6)
+      		return;
+      	settings.fontSize-=1;
+      	$('#settings-fontsize').val(settings.fontSize);
+      });
+      $('#settings-fontsize-plus').on('click', function(){
+      	if (settings.fontSize>40)
+      		return;
+      	settings.fontSize+=1;
+      	$('#settings-fontsize').val(settings.fontSize);
+      });
+
+      $('#settings-font-FiraSans,#settings-font-PTSans,#settings-font-PTSerif').on('click', function(){
+      	settings.fontName=this.id.split('-').pop();
+      	$('#settings-font-FiraSans,#settings-font-PTSans,#settings-font-PTSerif').removeClass("selected");
+      	$(this).addClass("selected");
+      }); 
+
+
 	var applySettings = function() {
-		book.renderer.setStyle("font-size", settings.fontScale+"%");
+		book.renderer.setStyle("fontSize", settings.fontSize+"pt");
 		book.renderer.setStyle("font-family", settings.fontName);
-		book.renderer.setStyle("color", settings.color);
-		book.renderer.setStyle("background-color", settings.background);
+		book.renderer.setStyle("color", '#'+settings.color);
+		$("#main").css('backgroundColor', '#' + settings.background);
 		if (window.localStorage)
-				window.localStorage.setItem('settings', settings);
+				window.localStorage.setItem('settings', JSON.stringify(settings) );
 	}
 	book.renderer.registerHook("beforeChapterDisplay", function(callback, renderer){
 		 var path = window.location.origin + window.location.pathname;
@@ -1130,6 +1201,7 @@ EPUBJS.reader.SettingsController = function() {
 			path=path.split("/");
 			path.pop(); path.pop();
 			path = path.join("/"); 
+			applySettings();
 			renderer.applyHeadTags({
 				'link':{'rel':'stylesheet', 'href':path+'/reader/css/user-settings.css'}
 			});
@@ -1142,6 +1214,7 @@ EPUBJS.reader.SettingsController = function() {
 	}, true);
 
 
+	// applySettings();
 
 	return {
 		"show" : show,
