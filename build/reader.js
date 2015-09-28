@@ -1115,7 +1115,7 @@ EPUBJS.reader.SettingsController = function() {
 	}
 
 	book.settings.styles=settings;
-	
+
 	var $settings = $("#settings-modal"),
 			$overlay = $(".overlay");
 
@@ -1191,6 +1191,7 @@ EPUBJS.reader.SettingsController = function() {
 		book.renderer.setStyle("fontSize", settings.fontSize+"pt");
 		book.renderer.setStyle("font-family", settings.fontName);
 		book.renderer.setStyle("color", '#'+settings.color);
+		$(".arrow").css("color", '#'+settings.color);
 		$("#main").css('backgroundColor', '#' + settings.background);
 		if (window.localStorage)
 				window.localStorage.setItem('settings', JSON.stringify(settings) );

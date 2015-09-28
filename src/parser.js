@@ -345,18 +345,42 @@ EPUBJS.Parser.prototype.nav = function(navHtml, spineIndexByURL, bookSpine){
 };
 
 EPUBJS.Parser.prototype.toc = function(tocXml, spineIndexByURL, bookSpine){
+	
+	if(!tocXml.evaluate && document.evaluate) {
+		tocXml.evaluate = document.evaluate;
+	}
+
 	var navMap = tocXml.querySelector("navMap");
 	if(!navMap) return [];
 
 	function getTOC(parent){
 		var list = [],
-			snapshot = tocXml.evaluate("*[local-name()='navPoint']", parent, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null),
+			length, 
+			iterator,
+			needsReciursion;
+
+		if (typeof tocXml.evaluate == "function") {
+			var snapshot = tocXml.evaluate("*[local-name()='navPoint']", parent, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 			length = snapshot.snapshotLength;
+			needsReciursion = true;
+			iterator = function(i) {
+				return snapshot.snapshotItem(i);
+			}
+		} else {
+			var snapshot = tocXml.querySelectorAll("navPoint");
+			length = snapshot.length;
+			needsReciursion = false;
+			iterator = function(i) {
+				return snapshot[i];
+			}
+		}
+
+
 
 		if(length === 0) return [];
 
 		for ( var i=length-1 ; i >= 0; i-- ) {
-			var item = snapshot.snapshotItem(i);
+			var item = iterator(i);
 
 			var id = item.getAttribute('id') || false,
 					content = item.querySelector("content"),
@@ -367,7 +391,7 @@ EPUBJS.Parser.prototype.toc = function(tocXml, spineIndexByURL, bookSpine){
 					baseUrl = split[0],
 					spinePos = spineIndexByURL[baseUrl],
 					spineItem = bookSpine[spinePos],
-					subitems = getTOC(item),
+					subitems = needsReciursion?getTOC(item):false,
 					cfi = 	spineItem ? spineItem.cfi : '';
 
 			if(!id) {
@@ -379,8 +403,7 @@ EPUBJS.Parser.prototype.toc = function(tocXml, spineIndexByURL, bookSpine){
 					id = 'epubjs-autogen-toc-id-' + (idCounter++);
 				}
 			}
-
-			list.unshift({
+			var a= {
 						"id": id,
 						"href": src,
 						"label": text,
@@ -388,7 +411,9 @@ EPUBJS.Parser.prototype.toc = function(tocXml, spineIndexByURL, bookSpine){
 						"subitems" : subitems,
 						"parent" : parent ? parent.getAttribute('id') : null,
 						"cfi" : cfi
-			});
+			};
+			console.log(a);
+			list.unshift(a);
 
 		}
 
