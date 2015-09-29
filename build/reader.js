@@ -140,7 +140,7 @@ EPUBJS.Reader.prototype.adjustFontSize = function(e) {
 		this.settings.styles.fontSize = "100%";
 	}
 
-	fontSize = parseInt(this.settings.styles.fontSize.slice(0, -1));
+	fontSize = parseInt(this.settings.styles.fontSize);
 
 	if(MOD && e.keyCode == PLUS) {
 		e.preventDefault();
@@ -1197,11 +1197,13 @@ EPUBJS.reader.SettingsController = function() {
 				window.localStorage.setItem('settings', JSON.stringify(settings) );
 	}
 	book.renderer.registerHook("beforeChapterDisplay", function(callback, renderer){
-		 var path = window.location.origin + window.location.pathname;
-		
+		 var path =  window.location.pathname;
 			path=path.split("/");
-			path.pop(); path.pop();
+			if (path.length>2) {
+				path.pop(); path.pop();
+			} 
 			path = path.join("/"); 
+			path= window.location.origin + path;
 			applySettings();
 			renderer.applyHeadTags({
 				'link':{'rel':'stylesheet', 'href':path+'/reader/css/user-settings.css'}

@@ -3397,7 +3397,7 @@ EPUBJS.core.request = function(url, type, withCredentials) {
 
 	var deferred = new RSVP.defer();
 
-	var xhr = new XMLHttpRequest();
+	var xhr = new XMLHttpRequest(); 
 
 	//-- Check from PDF.js:
 	//   https://github.com/mozilla/pdf.js/blob/master/web/compatibility.js

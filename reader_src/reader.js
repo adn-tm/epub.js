@@ -140,7 +140,7 @@ EPUBJS.Reader.prototype.adjustFontSize = function(e) {
 		this.settings.styles.fontSize = "100%";
 	}
 
-	fontSize = parseInt(this.settings.styles.fontSize.slice(0, -1));
+	fontSize = parseInt(this.settings.styles.fontSize);
 
 	if(MOD && e.keyCode == PLUS) {
 		e.preventDefault();

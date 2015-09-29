@@ -191,13 +191,18 @@ EPUBJS.Hooks.register("beforeChapterDisplay").smartimages = function(callback, r
 			iheight = renderer.height,//chapter.bodyEl.clientHeight,//chapter.doc.body.getBoundingClientRect().height,
 			oheight;
 
+		var svgs = renderer.contents.querySelectorAll('svg');
+			items = items.concat(Array.prototype.slice.call(svgs));
+
 		if(renderer.layoutSettings.layout != "reflowable") {
 			callback();
 			return; //-- Only adjust images for reflowable text
 		}
 
 		items.forEach(function(item){
-			
+			// IE SVG image fix
+			if (item.tagName=="image") 
+				return;
 			function size() {
 				var itemRect = item.getBoundingClientRect(),
 					rectHeight = itemRect.height,
@@ -233,7 +238,12 @@ EPUBJS.Hooks.register("beforeChapterDisplay").smartimages = function(callback, r
 					
 					item.setAttribute('data-height', newHeight);
 					
-				}else{
+				} else 
+				if ((item.tagName=="svg"))  {
+						newHeight = iheight - top - fontAdjust;
+						item.style.height = newHeight + "px";
+						item.style.width= "auto";
+				} else {
 					item.style.removeProperty('max-height');
 					item.style.removeProperty('margin-top');
 				}
