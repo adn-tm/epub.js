@@ -302,8 +302,7 @@ input:-ms-placeholder {
   margin: -33px 0 0 -33px;
 }
 
-#tocView,
-#bookmarksView {
+.listView {
   overflow-x: hidden;
   overflow-y: hidden;
   min-width: 300px;
@@ -315,9 +314,7 @@ input:-ms-placeholder {
   -ms-transition: visibility 0 ease .5s;
 }
 
-
-#sidebar.open #tocView,
-#sidebar.open #bookmarksView {
+#sidebar.open .listView {
   overflow-y: auto;
   visibility: visible;
   -webkit-transition: visibility 0 ease 0;
@@ -329,16 +326,15 @@ input:-ms-placeholder {
   display: block;
 }
 
-#tocView > ul,
-#bookmarksView > ul {
+.listView > ul {
   margin-top: 4em;
   margin-bottom: 50px;
   padding-left: 20px;
   display: block;
+   list-style: none;
 }
 
-#tocView li,
-#bookmarksView li {
+.listView li {
   margin-bottom:10px;
   padding-bottom: 5px;
   width: 225px;
@@ -349,7 +345,7 @@ input:-ms-placeholder {
 
 }
 
-.bookmark_link, .toc_link {
+.bookmark_link, .toc_link, .search_link {
   font-size: 10pt;
   font-weight: 100;
 }
@@ -426,7 +422,7 @@ input:-ms-placeholder {
   padding-top: 50px;
   overflow-y: auto;
 }
-
+/*
 #searchResults {
   margin-bottom: 50px;
   padding-left: 20px;
@@ -468,7 +464,7 @@ input:-ms-placeholder {
   display: block;
   overflow-y: scroll;
 }
-
+*/
 #notes {
  padding: 0 0 0 34px;
 }
@@ -548,7 +544,8 @@ input:-ms-placeholder {
   left: 50%;
   width: 50%;
   width: 630px;
-
+  font-family:  FiraSans, Georgia, "Times New Roman", Times, serif;
+  font-weight: 100;
   height: auto;
   z-index: 2000;
   visibility: hidden;
@@ -596,8 +593,8 @@ input:-ms-placeholder {
   margin: 0;
   padding: 6px;
   text-align: center;
-  font-size: 22px;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: 100;
   opacity: 0.8;
   background: rgba(0,0,0,0.1);
   border-radius: 3px 3px 0 0;
@@ -852,6 +849,8 @@ input:-ms-placeholder {
 }
 .settings-field {
   font-family: FiraSans;
+  height: 37px;
+  margin-top: 5px;
 }
 
 .settings-field > div  {
@@ -881,6 +880,10 @@ input:-ms-placeholder {
     margin-right: 5px;
     height: 20px;
     padding-bottom: 5px;
+}
+.label-color {
+    position: relative;
+    top: -6px;
 }
 
 .button {

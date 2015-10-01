@@ -1901,8 +1901,8 @@ EPUBJS.Book.prototype.unpack = function(packageXml){
 	book.ready.spine.resolve(book.contents.spine);
 	book.ready.metadata.resolve(book.contents.metadata);
 	book.ready.cover.resolve(book.contents.cover);
-
-	book.locations = new EPUBJS.Locations(book.spine, book.store, book.settings.withCredentials);
+ 
+	book.locations = new EPUBJS.Locations(book.spine, book.store, book.settings.withCredentials); 
 
 	//-- Load the TOC, optional; either the EPUB3 XHTML Navigation file or the EPUB2 NCX file
 	if(book.contents.navPath) {
@@ -2009,6 +2009,91 @@ EPUBJS.Book.prototype.createHiddenRender = function(renderer, _width, _height) {
 	return hiddenContainer;
 };
 
+/*
+// Generates the pageList array by loading every chapter and paging through them
+EPUBJS.Book.prototype.generateBookIndex = function(){
+	var indxDocuments=[];
+	// var pager = new EPUBJS.Renderer(this.settings.render_method, false); //hidden
+	// var hiddenContainer = this.createHiddenRender(pager, width, height);
+	var deferred = new RSVP.defer();
+	var spinePos = -1;
+	var spineLength = this.spine.length;
+	var totalPages = 0;
+	var currentPage = 0;
+	var nextChapter = function(deferred){
+		var chapter;
+		var next = spinePos + 1;
+		var done = deferred || new RSVP.defer();
+		var loaded;
+		if(next >= spineLength) {
+			done.resolve();
+		} else {
+			spinePos = next;
+			chapter = new EPUBJS.Chapter(this.spine[spinePos], this.store);
+			chapter.load().then(function(doc){
+				chapter.buildIndexDocuments(doc).then(function(documents){
+					for(var i=0; i<documents.length; i++) {
+
+					}
+					// Load up the next chapter
+					setTimeout(function(){
+						nextChapter(done);
+					}, 1);
+				});
+			});
+		}
+		return done.promise;
+	}.bind(this);
+
+	var finished = nextChapter().then(function(){
+		pager.remove();
+		this.element.removeChild(hiddenContainer);
+		deferred.resolve(pageList);
+	}.bind(this));
+
+	return deferred.promise;
+};
+
+*/ 
+
+// Generates the pageList array by loading every chapter and paging through them
+EPUBJS.Book.prototype.search = function(query){
+	var matches=[];
+	// var pager = new EPUBJS.Renderer(this.settings.render_method, false); //hidden
+	// var hiddenContainer = this.createHiddenRender(pager, width, height);
+	var deferred = new RSVP.defer();
+	var spinePos = -1;
+	var spineLength = this.spine.length;
+	var totalPages = 0;
+	var currentPage = 0;
+	var nextChapter = function(deferred){
+		var chapter;
+		var next = spinePos + 1;
+		var done = deferred || new RSVP.defer();
+		var loaded;
+		if(next >= spineLength) {
+			done.resolve(matches);
+		} else {
+			spinePos = next;
+			chapter = new EPUBJS.Chapter(this.spine[spinePos], this.store);
+			chapter.load().then(function(doc){
+				var oneChapterResults=chapter.find(query);
+					matches=matches.concat(oneChapterResults);
+					// Load up the next chapter
+					setTimeout(function(){
+						nextChapter(done);
+					}, 1);
+				});
+		}
+		return done.promise;
+	}.bind(this);
+	var finished = nextChapter().then(function(){
+		deferred.resolve(matches);
+	}.bind(this));
+
+	return deferred.promise;
+};
+
 // Generates the pageList array by loading every chapter and paging through them
 EPUBJS.Book.prototype.generatePageList = function(width, height){
 	var pageList = [];
@@ -2041,7 +2126,7 @@ EPUBJS.Book.prototype.generatePageList = function(width, height){
 
 				if(pager.pageMap.length % 2 > 0 &&
 					 pager.spreads) {
-					currentPage += 1; // Handle Spreads
+					currentPage += 1; // Handle Spreads 
 					pageList.push({
 						"cfi" : pager.pageMap[pager.pageMap.length - 1].end,
 						"page" : currentPage
@@ -4515,6 +4600,87 @@ EPUBJS.EpubCFI.prototype.generateRangeFromCfi = function(cfi, _doc) {
   return range;
 };
 
+
+/*
+
+EPUBJS.EpubCFI.prototype.generateRangeFromCfi = function(cfi, _doc) {
+  var doc = _doc || document;
+  var range = doc.createRange();
+//  var lastStep;
+  var xpath;
+  var startContainer;
+  var textLength;
+  var endCfi, endContainer;
+  if(typeof cfi === 'string') {
+      var commaPos = cfi.indexOf(',');
+      if (commaPos>0) {
+        var sepPos= cfi.indexOf('!');
+        endCfi=cfi.substr(0,sepPos+1)+cfi.substr(commaPos+1);
+        endCfi=this.parse(endCfi);
+      //  cfi=cfi.substr(0, commaPos)+")";
+      }
+    cfi = this.parse(cfi);
+  };
+  
+  // check spinePos
+  if(cfi.spinePos === -1) {
+    // Not a valid CFI
+    return false;
+  }
+    
+  xpath = this.generateXpathFromSteps(cfi.steps);
+  
+  // Get the terminal step
+//  lastStep = cfi.steps[cfi.steps.length-1];
+  startContainer = doc.evaluate(xpath, doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
+  if(!startContainer || startContainer==doc) {
+    return null;
+  }
+  if (endCfi) {
+    xpath = this.generateXpathFromSteps(endCfi.steps);
+//    lastEndStep = endCfi.steps[endCfi.steps.length-1];
+    endContainer = doc.evaluate(xpath, doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    
+  } else 
+    endContainer= startContainer;
+  var a = startContainer;
+  while (a && !a.length && a.previousSibling) {
+    a= a.previousSibling;
+    if (a.nodeType!=3)
+        a=a.lastChild;
+  };
+  startContainer = a;
+  
+  var a = endContainer;
+  while (a && !a.length && a.previousSibling) {
+    a= a.previousSibling;
+    if (a.nodeType!=3)
+        a=a.lastChild;
+  };
+  endContainer = a;
+
+  if (startContainer && cfi.characterOffset >= 0) {
+    textLength = startContainer.textContent.length;
+
+    if (cfi.characterOffset < textLength) {
+      range.setStart(startContainer, cfi.characterOffset);
+      if (endCfi)
+        range.setEnd(endContainer, Math.min(endContainer.textContent.length, endCfi.characterOffset)-1 );
+      else range.setEnd(startContainer, Math.min(startContainer.textContent.length,textLength)-1 );
+    } else {
+      console.debug("offset greater than length:", cfi.characterOffset, textLength);
+      range.setStart(startContainer, textLength - 1 );
+      range.setEnd(startContainer, textLength );  
+    }
+  } else if(startContainer) {
+    range.selectNode(startContainer);
+  }
+  // doc.defaultView.getSelection().addRange(range);
+  return range;
+};
+*/
+
 EPUBJS.EpubCFI.prototype.isCfiString = function(target) {
   if(typeof target === "string" &&
     target.indexOf("epubcfi(") === 0) {
@@ -4523,6 +4689,7 @@ EPUBJS.EpubCFI.prototype.isCfiString = function(target) {
 
   return false;
 };
+
 
 EPUBJS.Events = function(obj, el){
 	

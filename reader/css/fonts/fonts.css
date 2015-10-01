@@ -7,7 +7,7 @@ html, body {
     -moz-hyphens: auto;
     -ms-hyphens: auto;
     -webkit-touch-callout: none !important;
-    -webkit-user-select: none !important;     
+    
 }
 
 div, p {
@@ -16,12 +16,12 @@ div, p {
     -moz-hyphens: auto;
     -ms-hyphens: auto;
     -webkit-touch-callout: none !important;
-    -webkit-user-select: none !important;     
+    
 }
 
 a {
     -webkit-touch-callout: none !important;
-    -webkit-user-select: none !important; 	
+    
 }
 .poetry {
 	-webkit-hyphens: none;

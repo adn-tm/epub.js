@@ -541,6 +541,87 @@ EPUBJS.EpubCFI.prototype.generateRangeFromCfi = function(cfi, _doc) {
   return range;
 };
 
+
+/*
+
+EPUBJS.EpubCFI.prototype.generateRangeFromCfi = function(cfi, _doc) {
+  var doc = _doc || document;
+  var range = doc.createRange();
+//  var lastStep;
+  var xpath;
+  var startContainer;
+  var textLength;
+  var endCfi, endContainer;
+  if(typeof cfi === 'string') {
+      var commaPos = cfi.indexOf(',');
+      if (commaPos>0) {
+        var sepPos= cfi.indexOf('!');
+        endCfi=cfi.substr(0,sepPos+1)+cfi.substr(commaPos+1);
+        endCfi=this.parse(endCfi);
+      //  cfi=cfi.substr(0, commaPos)+")";
+      }
+    cfi = this.parse(cfi);
+  };
+  
+  // check spinePos
+  if(cfi.spinePos === -1) {
+    // Not a valid CFI
+    return false;
+  }
+    
+  xpath = this.generateXpathFromSteps(cfi.steps);
+  
+  // Get the terminal step
+//  lastStep = cfi.steps[cfi.steps.length-1];
+  startContainer = doc.evaluate(xpath, doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
+  if(!startContainer || startContainer==doc) {
+    return null;
+  }
+  if (endCfi) {
+    xpath = this.generateXpathFromSteps(endCfi.steps);
+//    lastEndStep = endCfi.steps[endCfi.steps.length-1];
+    endContainer = doc.evaluate(xpath, doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    
+  } else 
+    endContainer= startContainer;
+  var a = startContainer;
+  while (a && !a.length && a.previousSibling) {
+    a= a.previousSibling;
+    if (a.nodeType!=3)
+        a=a.lastChild;
+  };
+  startContainer = a;
+  
+  var a = endContainer;
+  while (a && !a.length && a.previousSibling) {
+    a= a.previousSibling;
+    if (a.nodeType!=3)
+        a=a.lastChild;
+  };
+  endContainer = a;
+
+  if (startContainer && cfi.characterOffset >= 0) {
+    textLength = startContainer.textContent.length;
+
+    if (cfi.characterOffset < textLength) {
+      range.setStart(startContainer, cfi.characterOffset);
+      if (endCfi)
+        range.setEnd(endContainer, Math.min(endContainer.textContent.length, endCfi.characterOffset)-1 );
+      else range.setEnd(startContainer, Math.min(startContainer.textContent.length,textLength)-1 );
+    } else {
+      console.debug("offset greater than length:", cfi.characterOffset, textLength);
+      range.setStart(startContainer, textLength - 1 );
+      range.setEnd(startContainer, textLength );  
+    }
+  } else if(startContainer) {
+    range.selectNode(startContainer);
+  }
+  // doc.defaultView.getSelection().addRange(range);
+  return range;
+};
+*/
+
 EPUBJS.EpubCFI.prototype.isCfiString = function(target) {
   if(typeof target === "string" &&
     target.indexOf("epubcfi(") === 0) {
@@ -549,3 +630,4 @@ EPUBJS.EpubCFI.prototype.isCfiString = function(target) {
 
   return false;
 };
+

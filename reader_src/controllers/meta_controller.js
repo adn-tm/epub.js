@@ -6,7 +6,7 @@ EPUBJS.reader.MetaController = function(meta) {
 			$author = $("#chapter-title"),
 			$dash = $("#title-seperator");
 
-		document.title = title+" – "+author;
+		document.title = title+" – "+author; 
 
 		$title.html(title);
 		$author.html(author);
@@ -21,7 +21,5 @@ EPUBJS.reader.MetaController = function(meta) {
 				}
 				callback();
 			}, true);
-
-
 };
 
