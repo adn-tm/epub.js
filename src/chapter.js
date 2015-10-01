@@ -280,7 +280,7 @@ EPUBJS.Chapter.prototype.find = function(_query){
 
 
 EPUBJS.Chapter.prototype.textSprint = function(root, func) {
-	var treeWalker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+	var treeWalker = this.document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
 			acceptNode: function (node) {
 					if (node.data && ! /^\s*$/.test(node.data) ) {
 						return NodeFilter.FILTER_ACCEPT;
