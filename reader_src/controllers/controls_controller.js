@@ -1,6 +1,8 @@
 EPUBJS.reader.ControlsController = function(book) {
 	var reader = this;
-
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
+	
 	var $store = $("#store"),
 			$fullscreen = $("#fullscreen"),
 			$fullscreenicon = $("#fullscreenicon"),
@@ -26,7 +28,7 @@ EPUBJS.reader.ControlsController = function(book) {
 	book.on("book:online", goOnline);
 	book.on("book:offline", goOffline);
 
-	$slider.on("click", function () {
+	$slider.on(eventName, function () {
 		if(reader.sidebarOpen) {
 			reader.SidebarController.hide();
 			$slider.addClass("icon-menu");
@@ -39,7 +41,7 @@ EPUBJS.reader.ControlsController = function(book) {
 	});
 
 	if(typeof screenfull !== 'undefined') {
-		$fullscreen.on("click", function() {
+		$fullscreen.on(eventName, function() {
 			screenfull.toggle($('#container')[0]);
 		});
 		if(screenfull.raw) {
@@ -58,12 +60,12 @@ EPUBJS.reader.ControlsController = function(book) {
 		}
 	}
 
-	$settings.on("click", function() {
+	$settings.on(eventName, function() {
 		reader.SettingsController.show();
 	});
 
 
-	$bookmark.on("click", function() {
+	$bookmark.on(eventName, function() {
 		var cfi = reader.book.getCurrentLocationCfi();
 		var bookmarked = reader.isBookmarked(cfi);
 

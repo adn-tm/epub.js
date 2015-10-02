@@ -1,6 +1,7 @@
 EPUBJS.reader.SidebarController = function(book) {
 	var reader = this;
-
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
 	var $sidebar = $("#sidebar"),
 			$panels = $("#panels");
 
@@ -34,7 +35,7 @@ EPUBJS.reader.SidebarController = function(book) {
 		$sidebar.removeClass("open");
 	}
 
-	$panels.find(".show_view").on("click", function(event) {
+	$panels.find(".show_view").on(eventName, function(event) {
 		var view = $(this).data("view");
 
 		changePanelTo(view);

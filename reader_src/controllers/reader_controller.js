@@ -4,6 +4,10 @@ EPUBJS.reader.ReaderController = function(book) {
 			$loader = $("#loader"),
 			$next = $("#next"),
 			$prev = $("#prev");
+
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
+				
 	var reader = this;
 	var book = this.book;
 	var slideIn = function() {
@@ -54,6 +58,36 @@ EPUBJS.reader.ReaderController = function(book) {
 
 	var keylock = false;
 
+	var prevHandler = function(e){
+		if(book.metadata.direction === "rtl") {
+			book.prevPage();
+		} else {
+			book.nextPage();
+		}
+		e.preventDefault();
+	};
+
+
+	var nextHandler = function(e){
+		
+		if(book.metadata.direction === "rtl") {
+			book.nextPage();
+		} else {
+			book.prevPage();
+		}
+
+		e.preventDefault();
+	};
+
+
+	$next.on(eventName, prevHandler);
+	$prev.on(eventName, nextHandler);
+
+/*
+	$("#main").on(eventName, function(e){
+		console.log("Viewer touched ", e)
+	});
+*/
 	var arrowKeys = function(e) {		
 		if(e.keyCode == 37) { 
 			
@@ -94,28 +128,6 @@ EPUBJS.reader.ReaderController = function(book) {
 	}
 
 	document.addEventListener('keydown', arrowKeys, false);
-
-	$next.on("click", function(e){
-		
-		if(book.metadata.direction === "rtl") {
-			book.prevPage();
-		} else {
-			book.nextPage();
-		}
-
-		e.preventDefault();
-	});
-
-	$prev.on("click", function(e){
-		
-		if(book.metadata.direction === "rtl") {
-			book.nextPage();
-		} else {
-			book.prevPage();
-		}
-
-		e.preventDefault();
-	});
 	
 	book.on("renderer:spreads", function(bool){
 		if(bool) {

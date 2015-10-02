@@ -90,7 +90,7 @@ EPUBJS.Reader = function(bookPath, _options) {
 	reader.ControlsController = EPUBJS.reader.ControlsController.call(reader, book);
 	reader.SidebarController = EPUBJS.reader.SidebarController.call(reader, book);
 	reader.BookmarksController = EPUBJS.reader.BookmarksController.call(reader, book);
-	reader.NotesController = EPUBJS.reader.NotesController.call(reader, book);
+//	reader.NotesController = EPUBJS.reader.NotesController.call(reader, book); 
 	reader.FootnoteController = EPUBJS.reader.FootnoteController.call(reader, book);
 	reader.SearchController = EPUBJS.reader.SearchController.call(reader, book);	
 
@@ -343,6 +343,9 @@ RSVP.EventTarget.mixin(EPUBJS.Reader.prototype);
 EPUBJS.reader.BookmarksController = function() {
 	var reader = this;
 	var book = this.book;
+	
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
 
 	var $bookmarks = $("#bookmarksView"),
 			$list = $bookmarks.find("#bookmarks");
@@ -389,7 +392,7 @@ EPUBJS.reader.BookmarksController = function() {
 
 		link.classList.add('bookmark_link');
 		
-		link.addEventListener("click", function(event){
+		link.addEventListener(eventName, function(event){
 				var cfi = this.getAttribute('href');
 				book.gotoCfi(cfi);
 				event.preventDefault();
@@ -426,7 +429,9 @@ EPUBJS.reader.BookmarksController = function() {
 };
 EPUBJS.reader.ControlsController = function(book) {
 	var reader = this;
-
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
+	
 	var $store = $("#store"),
 			$fullscreen = $("#fullscreen"),
 			$fullscreenicon = $("#fullscreenicon"),
@@ -452,7 +457,7 @@ EPUBJS.reader.ControlsController = function(book) {
 	book.on("book:online", goOnline);
 	book.on("book:offline", goOffline);
 
-	$slider.on("click", function () {
+	$slider.on(eventName, function () {
 		if(reader.sidebarOpen) {
 			reader.SidebarController.hide();
 			$slider.addClass("icon-menu");
@@ -465,7 +470,7 @@ EPUBJS.reader.ControlsController = function(book) {
 	});
 
 	if(typeof screenfull !== 'undefined') {
-		$fullscreen.on("click", function() {
+		$fullscreen.on(eventName, function() {
 			screenfull.toggle($('#container')[0]);
 		});
 		if(screenfull.raw) {
@@ -484,12 +489,12 @@ EPUBJS.reader.ControlsController = function(book) {
 		}
 	}
 
-	$settings.on("click", function() {
+	$settings.on(eventName, function() {
 		reader.SettingsController.show();
 	});
 
 
-	$bookmark.on("click", function() {
+	$bookmark.on(eventName, function() {
 		var cfi = reader.book.getCurrentLocationCfi();
 		var bookmarked = reader.isBookmarked(cfi);
 
@@ -952,6 +957,10 @@ EPUBJS.reader.ReaderController = function(book) {
 			$loader = $("#loader"),
 			$next = $("#next"),
 			$prev = $("#prev");
+
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
+				
 	var reader = this;
 	var book = this.book;
 	var slideIn = function() {
@@ -1002,6 +1011,36 @@ EPUBJS.reader.ReaderController = function(book) {
 
 	var keylock = false;
 
+	var prevHandler = function(e){
+		if(book.metadata.direction === "rtl") {
+			book.prevPage();
+		} else {
+			book.nextPage();
+		}
+		e.preventDefault();
+	};
+
+
+	var nextHandler = function(e){
+		
+		if(book.metadata.direction === "rtl") {
+			book.nextPage();
+		} else {
+			book.prevPage();
+		}
+
+		e.preventDefault();
+	};
+
+
+	$next.on(eventName, prevHandler);
+	$prev.on(eventName, nextHandler);
+
+/*
+	$("#main").on(eventName, function(e){
+		console.log("Viewer touched ", e)
+	});
+*/
 	var arrowKeys = function(e) {		
 		if(e.keyCode == 37) { 
 			
@@ -1042,28 +1081,6 @@ EPUBJS.reader.ReaderController = function(book) {
 	}
 
 	document.addEventListener('keydown', arrowKeys, false);
-
-	$next.on("click", function(e){
-		
-		if(book.metadata.direction === "rtl") {
-			book.prevPage();
-		} else {
-			book.nextPage();
-		}
-
-		e.preventDefault();
-	});
-
-	$prev.on("click", function(e){
-		
-		if(book.metadata.direction === "rtl") {
-			book.nextPage();
-		} else {
-			book.prevPage();
-		}
-
-		e.preventDefault();
-	});
 	
 	book.on("renderer:spreads", function(bool){
 		if(bool) {
@@ -1093,7 +1110,9 @@ EPUBJS.reader.ReaderController = function(book) {
 };
 EPUBJS.reader.SearchController = function(book) {
 	var $list = $("#searchResults");
-
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
+	
 	var currentChapter = false;
 
 	var generateTocItems = function(matches) {
@@ -1148,7 +1167,7 @@ EPUBJS.reader.SearchController = function(book) {
 		if (qry)
 			book.search(qry).then(function(matches){
 					generateTocItems(matches);
-					$list.find(".search_link").on("click", function(event){
+					$list.find(".search_link").on(eventName, function(event){
 							var url = this.getAttribute('href');
 
 							event.preventDefault();
@@ -1186,7 +1205,7 @@ EPUBJS.reader.SearchController = function(book) {
 			$("#show-Search").click();
 	});
 
-	$("#show-Search").on("click", doSearch)
+	$("#show-Search").on(eventName, doSearch)
 	
 
 	return {
@@ -1198,6 +1217,9 @@ EPUBJS.reader.SearchController = function(book) {
 EPUBJS.reader.SettingsController = function() {
 	var FONTS={"Serif":"PT Serif", "Sans":"PT Sans"};
 	var book = this.book;
+
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
 
 	var reader = this;
 	var DEFAULT_SETTINGS={
@@ -1213,6 +1235,10 @@ EPUBJS.reader.SettingsController = function() {
 		if (window.localStorage)
 				window.localStorage.setItem('settings', JSON.stringify(settings) );
 	};
+
+
+
+
 	for(var key in DEFAULT_SETTINGS) {
 		settings[key] = settings[key] || DEFAULT_SETTINGS[key];	
 	}
@@ -1252,16 +1278,16 @@ EPUBJS.reader.SettingsController = function() {
 		}
 	});
 
-	$sidebarReflowSetting.on('click', function() {
+	$sidebarReflowSetting.on(eventName, function() {
 		reader.settings.sidebarReflow = !reader.settings.sidebarReflow;
 	});
 
-	$settings.find(".closer").on("click", function() {
+	$settings.find(".closer").on(eventName, function() {
 		applySettings();
 		hide();
 	});
 
-	$overlay.on("click", function() {
+	$overlay.on(eventName, function() {
 		applySettings();
 		hide();
 	});
@@ -1270,20 +1296,20 @@ EPUBJS.reader.SettingsController = function() {
       $('#settings-fontsize').val(settings.fontSize);
       $('#settings-font-'+settings.fontName).addClass("selected");
 
-      $('#settings-fontsize-minus').on('click', function(){
+      $('#settings-fontsize-minus').on(eventName, function(){
       	if (settings.fontSize<6)
       		return;
       	settings.fontSize-=1;
       	$('#settings-fontsize').val(settings.fontSize);
       });
-      $('#settings-fontsize-plus').on('click', function(){
+      $('#settings-fontsize-plus').on(eventName, function(){
       	if (settings.fontSize>40)
       		return;
       	settings.fontSize+=1;
       	$('#settings-fontsize').val(settings.fontSize);
       });
 
-      $('#settings-font-FiraSans,#settings-font-PTSans,#settings-font-PTSerif').on('click', function(){
+      $('#settings-font-FiraSans,#settings-font-PTSans,#settings-font-PTSerif').on(eventName, function(){
       	settings.fontName=this.id.split('-').pop();
       	$('#settings-font-FiraSans,#settings-font-PTSans,#settings-font-PTSerif').removeClass("selected");
       	$(this).addClass("selected");
@@ -1325,11 +1351,12 @@ EPUBJS.reader.SettingsController = function() {
 	return {
 		"show" : show,
 		"hide" : hide
-	};
+	}; 
 };
 EPUBJS.reader.SidebarController = function(book) {
 	var reader = this;
-
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
 	var $sidebar = $("#sidebar"),
 			$panels = $("#panels");
 
@@ -1363,7 +1390,7 @@ EPUBJS.reader.SidebarController = function(book) {
 		$sidebar.removeClass("open");
 	}
 
-	$panels.find(".show_view").on("click", function(event) {
+	$panels.find(".show_view").on(eventName, function(event) {
 		var view = $(this).data("view");
 
 		changePanelTo(view);
@@ -1380,6 +1407,9 @@ EPUBJS.reader.SidebarController = function(book) {
 EPUBJS.reader.TocController = function(toc) {
 	var book = this.book;
 
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
+	
 	var $list = $("#tocView"),
 			docfrag = document.createDocumentFragment();
 
@@ -1458,7 +1488,7 @@ EPUBJS.reader.TocController = function(toc) {
 	docfrag.appendChild(tocitems);
 
 	$list.append(docfrag);
-	$list.find(".toc_link").on("click", function(event){
+	$list.find(".toc_link").on(eventName, function(event){
 			var url = this.getAttribute('href');
 
 			event.preventDefault();
@@ -1475,7 +1505,7 @@ EPUBJS.reader.TocController = function(toc) {
 
 	});
 
-	$list.find(".toc_toggle").on("click", function(event){
+	$list.find(".toc_toggle").on(eventName, function(event){
 			var $el = $(this).parent('li'),
 					open = $el.hasClass("openChapter");
 

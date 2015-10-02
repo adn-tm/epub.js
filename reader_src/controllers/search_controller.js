@@ -1,6 +1,8 @@
 EPUBJS.reader.SearchController = function(book) {
 	var $list = $("#searchResults");
-
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
+	
 	var currentChapter = false;
 
 	var generateTocItems = function(matches) {
@@ -55,7 +57,7 @@ EPUBJS.reader.SearchController = function(book) {
 		if (qry)
 			book.search(qry).then(function(matches){
 					generateTocItems(matches);
-					$list.find(".search_link").on("click", function(event){
+					$list.find(".search_link").on(eventName, function(event){
 							var url = this.getAttribute('href');
 
 							event.preventDefault();
@@ -93,7 +95,7 @@ EPUBJS.reader.SearchController = function(book) {
 			$("#show-Search").click();
 	});
 
-	$("#show-Search").on("click", doSearch)
+	$("#show-Search").on(eventName, doSearch)
 	
 
 	return {

@@ -92,6 +92,35 @@ body {
   box-shadow: inset 0 0 6px rgba(155,155,155,.8);
 }
 
+
+#logoView {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  visibility: visible;
+  margin-right: 20px;
+  margin-left: 20px;
+  opacity:1;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat no-repeat;
+  background-image: url('../img/culture-k.png');
+  border:1px solid black;
+}
+
+#logoBannerView {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  min-width: 300px;
+  width: 25%;
+  height: 50px;
+  visibility: visible;
+  background-color:white;
+  background-position: center center;
+  background-repeat: no-repeat no-repeat;
+  background-image: url('../img/culture-ru.png')
+}
+
 #book-title {
   font-weight: 600;
 }
@@ -126,7 +155,7 @@ body {
 
 .arrow {
   position: absolute;
-  top: 50%;
+  bottom: 50%;
   margin-top: -32px;
   font-size: 64px;
   color: #E2E2E2;
@@ -148,6 +177,10 @@ body {
 .arrow.active {
   color: #000;
 }
+
+
+
+
 
 #sidebar {
   background: #6b6b6b;
@@ -337,7 +370,7 @@ input:-ms-placeholder {
 .listView li {
   margin-bottom:10px;
   padding-bottom: 5px;
-  width: 225px;
+/*  width: 225px; */
   font-family:  FiraSans, Georgia, "Times New Roman", Times, serif;
   list-style: none;
   line-height:1em;
@@ -540,18 +573,21 @@ input:-ms-placeholder {
 
 .modal {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 0%;
+  right: 0%;
   width: 50%;
-  width: 630px;
+  height:50%;
+  min-width:160px;
+  min-height:220px;  
+
+  max-width:520px;
+  max-height:320px;
   font-family:  FiraSans, Georgia, "Times New Roman", Times, serif;
   font-weight: 100;
   height: auto;
   z-index: 2000;
   visibility: hidden;
-  margin-left: -320px;
-  margin-top: -160px;
-      display: none;
+  display: none;
 }
 
 .overlay {
@@ -573,11 +609,13 @@ input:-ms-placeholder {
 
 .md-show {
     visibility: visible;
+     display:block;
 }
 
 .md-show ~ .overlay {
     opacity: 1;
     visibility: visible;
+    display:block;
 }
 
 /* Content styles */
@@ -658,125 +696,6 @@ input:-ms-placeholder {
   padding: 4px;
 }
 
-@media only screen and (max-width: 1040px) {
-  #viewer{
-    width: 50%;
-    margin-left: 25%;
-  }
-
-  #divider,
-  #divider.show {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 900px) {
-  #viewer{
-    width: 60%;
-    margin-left: 20%;
-  }
-
-  #prev {
-    left: 20px;
-  }
-
-  #next {
-    right: 20px;
-  }
-}
-
-@media only screen and (max-width: 550px) {
-  #viewer{
-    width: 80%;
-    margin-left: 10%;
-  }
-
-  #prev {
-    left: 0;
-  }
-
-  #next {
-    right: 0;
-  }
-
-  .arrow {
-    height: 100%;
-    top: 45px;
-    width: 10%;
-    text-indent: -10000px;
-  }
-
-  #main {
-    -webkit-transform: translate(0, 0);
-    -moz-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    -webkit-transition: -webkit-transform .3s;
-    -moz-transition: -moz-transform .3s;
-    -ms-transition: -moz-transform .3s;
-  }
-
-  #main.closed {
-    -webkit-transform: translate(260px, 0);
-    -moz-transform: translate(260px, 0);
-    -ms-transform: translate(260px, 0);
-  }
-
-  #titlebar {
-    /* font-size: 16px; */
-    /* margin: 0 50px 0 50px; */
-  }
-
-  #metainfo {
-    font-size: 10px;
-  }
-
-  #tocView {
-    width: 260px;
-  }
-
-  #tocView li {
-    font-size: 12px;
-  }
-
-  #tocView > ul{
-    padding-left: 10px;
-  }
-}
-
-
-/* For iPad portrait layouts only */
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
-    #viewer iframe {
-        width: 460px;
-        height: 740px;
-    }
-}
- /*For iPad landscape layouts only */
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
-    #viewer iframe {
-        width: 460px;
-        height: 415px;
-    }
-}
-/* For iPhone portrait layouts only */
-@media only screen and (max-device-width: 480px) and (orientation: portrait) {
-    #viewer {
-      width: 256px;
-      height: 432px;
-    }
-    #viewer iframe {
-       width: 256px;
-       height: 432px;
-    }
-}
-/* For iPhone landscape layouts only */
-@media only screen and (max-device-width: 480px) and (orientation: landscape) {
-    #viewer iframe {
-        width: 256px;
-        height: 124px;
-    }
-}
-
 [class^="icon-"]:before, [class*=" icon-"]:before {
     font-family: "fontello";
     font-style: normal;
@@ -850,11 +769,12 @@ input:-ms-placeholder {
 }
 .settings-field {
   font-family: FiraSans;
-  height: 37px;
-  margin-top: 5px;
+  min-height: 37px;
+  margin-top: 7px;
+  padding-bottom: 2px;
 }
 
-.settings-field > div  {
+.settings-field > div,  .settings-field > div > div {
     display:inline-block;
     height:20px;
     font-size:10pt;
@@ -865,7 +785,7 @@ input:-ms-placeholder {
 .settings-field div.button:hover {
   box-shadow:0px 0px 10px white;
 }
-.settings-field > input {
+.settings-field  input {
   background-color: transparent;
   text-align: center;
   border:none;
@@ -894,6 +814,7 @@ input:-ms-placeholder {
     outline: 1px solid gray;
     padding:2px;
     text-align: center;
+    display: inline-block;
 }
 
 .settings-field .small {
@@ -901,17 +822,17 @@ input:-ms-placeholder {
 }
 
  .sans {
-     width:120px !important;
+     width:80px !important;
      font-family: 'PTSans';
  }
 
 .seriff {
-     width:120px !important;
+     width:80px !important;
      font-family: 'PTSerif';
  }
 
  .fira {
-     width:120px !important;
+     width:80px !important;
      font-family: 'FiraSans';
  }
 
@@ -919,30 +840,213 @@ input:-ms-placeholder {
     background-color: #999;
  }
 
-#logoView {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  visibility: visible;
-  margin-right: 20px;
-  margin-left: 20px;
-  opacity:1;
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat no-repeat;
-  background-image: url('../img/culture-k.png');
-  border:1px solid black;
+
+
+@media only screen and (max-width: 1040px) {
+  #viewer{
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  #divider,
+  #divider.show {
+    display: none;
+  }
 }
 
-#logoBannerView {
-  overflow-x: hidden;
-  overflow-y: hidden;
-  min-width: 300px;
-  width: 25%;
-  height: 50px;
-  visibility: visible;
-  background-color:white;
-  background-position: center center;
-  background-repeat: no-repeat no-repeat;
-  background-image: url('../img/culture-ru.png')
+@media only screen and (max-height: 480px) {
+  #viewer{
+    height: 70%;
+  }
 }
+@media only screen and (max-width: 900px)  {
+  .md-content > div {
+  padding: 5px 10px 5px;
+  margin: 0;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.md-content > div p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.md-content > div ul {
+  margin: 0;
+  padding: 0 0 20px 10px;
+}
+
+.md-content > div ul li {
+  padding: 2px 0;
+}
+
+.md-content button {
+  display: block;
+  margin: 0 auto;
+  font-size: 0.8em;
+}
+
+
+  #viewer{
+    width: 90%;
+    margin-left: 5%;
+  }
+
+ #prev {
+    left: 0px;
+  }
+
+  #next {
+    right: 0px;
+  }
+
+  .arrow {
+    height: 30px;
+    bottom: 2%;
+    width: 30px;
+    font-size: 34px;
+    text-indent: 3px;
+  }
+
+   #titlebar {
+    height: 20px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+.md-content > div {
+  padding: 5px 5px 5px;
+  margin: 0;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.md-content > div p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.md-content > div ul {
+  margin: 0;
+  padding: 0 0 10px 50px;
+}
+
+.md-content > div ul li {
+  padding: 2px 0;
+}
+
+.md-content button {
+  display: block;
+  margin: 0 auto;
+  font-size: 0.8em;
+}
+
+
+  #viewer{
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  #prev {
+    left: 0px;
+  }
+
+  #next {
+    right: 0px;
+  }
+
+  .arrow {
+    height: 30px;
+    bottom: 2%;
+    width: 30px;
+    font-size: 30px;
+    text-indent: 3px;
+  }
+
+  #main {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -webkit-transition: -webkit-transform .3s;
+    -moz-transition: -moz-transform .3s;
+    -ms-transition: -moz-transform .3s;
+  }
+
+  #main.closed {
+    -webkit-transform: translate(205px, 0);
+    -moz-transform: translate(205px, 0);
+    -ms-transform: translate(205px, 0);
+  }
+
+  #titlebar {
+    /* font-size: 16px; */
+    /* margin: 0 50px 0 50px; */
+    height: 20px;
+  }
+
+  #metainfo {
+    font-size: 10px;
+  }
+
+  .listView {
+    width: 200px;
+  }
+
+  .listView li {
+    font-size: 12px;
+  }
+
+  .listView > ul{
+    padding-left: 10px;
+  }
+
+  .listView {
+    min-width: 200px;
+  }
+  #sidebar {
+     min-width: 200px;
+  }
+  #logoBannerView {
+    min-width: 200px;
+  }
+  #searchBox {
+    width:110px;
+    margin-left: 5px;
+  }
+}
+
+
+/* For iPad portrait layouts only 
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+    #viewer iframe {
+        width: 460px;
+        height: 740px;
+    }
+}
+ /*For iPad landscape layouts only 
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
+    #viewer iframe {
+        width: 460px;
+        height: 415px;
+    }
+}
+/* For iPhone portrait layouts only 
+@media only screen and (max-device-width: 480px) and (orientation: portrait) {
+    #viewer {
+      width: 256px;
+      height: 432px;
+    }
+    #viewer iframe {
+       width: 256px;
+       height: 432px;
+    }
+}
+/* For iPhone landscape layouts only 
+@media only screen and (max-device-width: 480px) and (orientation: landscape) {
+    #viewer iframe {
+        width: 256px;
+        height: 124px;
+    }
+}
+*/

@@ -2,6 +2,9 @@ EPUBJS.reader.SettingsController = function() {
 	var FONTS={"Serif":"PT Serif", "Sans":"PT Sans"};
 	var book = this.book;
 
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
+
 	var reader = this;
 	var DEFAULT_SETTINGS={
 				fontSize:12,
@@ -16,6 +19,10 @@ EPUBJS.reader.SettingsController = function() {
 		if (window.localStorage)
 				window.localStorage.setItem('settings', JSON.stringify(settings) );
 	};
+
+
+
+
 	for(var key in DEFAULT_SETTINGS) {
 		settings[key] = settings[key] || DEFAULT_SETTINGS[key];	
 	}
@@ -55,16 +62,16 @@ EPUBJS.reader.SettingsController = function() {
 		}
 	});
 
-	$sidebarReflowSetting.on('click', function() {
+	$sidebarReflowSetting.on(eventName, function() {
 		reader.settings.sidebarReflow = !reader.settings.sidebarReflow;
 	});
 
-	$settings.find(".closer").on("click", function() {
+	$settings.find(".closer").on(eventName, function() {
 		applySettings();
 		hide();
 	});
 
-	$overlay.on("click", function() {
+	$overlay.on(eventName, function() {
 		applySettings();
 		hide();
 	});
@@ -73,20 +80,20 @@ EPUBJS.reader.SettingsController = function() {
       $('#settings-fontsize').val(settings.fontSize);
       $('#settings-font-'+settings.fontName).addClass("selected");
 
-      $('#settings-fontsize-minus').on('click', function(){
+      $('#settings-fontsize-minus').on(eventName, function(){
       	if (settings.fontSize<6)
       		return;
       	settings.fontSize-=1;
       	$('#settings-fontsize').val(settings.fontSize);
       });
-      $('#settings-fontsize-plus').on('click', function(){
+      $('#settings-fontsize-plus').on(eventName, function(){
       	if (settings.fontSize>40)
       		return;
       	settings.fontSize+=1;
       	$('#settings-fontsize').val(settings.fontSize);
       });
 
-      $('#settings-font-FiraSans,#settings-font-PTSans,#settings-font-PTSerif').on('click', function(){
+      $('#settings-font-FiraSans,#settings-font-PTSans,#settings-font-PTSerif').on(eventName, function(){
       	settings.fontName=this.id.split('-').pop();
       	$('#settings-font-FiraSans,#settings-font-PTSans,#settings-font-PTSerif').removeClass("selected");
       	$(this).addClass("selected");
@@ -128,5 +135,5 @@ EPUBJS.reader.SettingsController = function() {
 	return {
 		"show" : show,
 		"hide" : hide
-	};
+	}; 
 };

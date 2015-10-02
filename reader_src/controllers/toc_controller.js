@@ -1,6 +1,9 @@
 EPUBJS.reader.TocController = function(toc) {
 	var book = this.book;
 
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
+	
 	var $list = $("#tocView"),
 			docfrag = document.createDocumentFragment();
 
@@ -79,7 +82,7 @@ EPUBJS.reader.TocController = function(toc) {
 	docfrag.appendChild(tocitems);
 
 	$list.append(docfrag);
-	$list.find(".toc_link").on("click", function(event){
+	$list.find(".toc_link").on(eventName, function(event){
 			var url = this.getAttribute('href');
 
 			event.preventDefault();
@@ -96,7 +99,7 @@ EPUBJS.reader.TocController = function(toc) {
 
 	});
 
-	$list.find(".toc_toggle").on("click", function(event){
+	$list.find(".toc_toggle").on(eventName, function(event){
 			var $el = $(this).parent('li'),
 					open = $el.hasClass("openChapter");
 

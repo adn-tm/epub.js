@@ -1,6 +1,9 @@
 EPUBJS.reader.BookmarksController = function() {
 	var reader = this;
 	var book = this.book;
+	
+	var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+	var eventName = supportsTouch?"touchstart":"click";
 
 	var $bookmarks = $("#bookmarksView"),
 			$list = $bookmarks.find("#bookmarks");
@@ -47,7 +50,7 @@ EPUBJS.reader.BookmarksController = function() {
 
 		link.classList.add('bookmark_link');
 		
-		link.addEventListener("click", function(event){
+		link.addEventListener(eventName, function(event){
 				var cfi = this.getAttribute('href');
 				book.gotoCfi(cfi);
 				event.preventDefault();
