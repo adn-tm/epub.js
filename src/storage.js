@@ -9,7 +9,10 @@ EPUBJS.Storage = function(withCredentials){
 
 //-- Load the zip lib and set the workerScriptsPath
 EPUBJS.Storage.prototype.checkRequirements = function(callback){
-	if(typeof(localforage) == "undefined") console.error("localForage library not loaded");
+	if(typeof(localforage) == "undefined") { 
+		// console.error("localForage library not loaded");
+		window.localforage = window.localStorage;
+	}
 };
 
 EPUBJS.Storage.prototype.put = function(assets, store) {

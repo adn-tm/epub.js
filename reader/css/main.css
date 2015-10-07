@@ -342,6 +342,7 @@ input:-ms-placeholder {
   width: 25%;
   height: 90%;
   visibility: hidden;
+  display:none;
   -webkit-transition: visibility 0 ease .5s;
   -moz-transition: visibility 0 ease .5s;
   -ms-transition: visibility 0 ease .5s;
@@ -381,6 +382,21 @@ input:-ms-placeholder {
 .bookmark_link, .toc_link, .search_link {
   font-size: 10pt;
   font-weight: 100;
+}
+
+.bookmark_remove {
+    display:inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: :#777;
+    border: 1px solid white;
+    background-image: url(../img/note-close.png);
+    background-repeat: no-repeat no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+.bookmark_remove:hover {
+  box-shadow: 0px 0px 5px white;
 }
 
 #tocView li:active,
@@ -423,6 +439,13 @@ input:-ms-placeholder {
   display: block;
 }
 
+
+#bookmarks .list_item > a {
+    padding-left:30px;
+    display: block;
+}
+
+
 #tocView.hidden {
   display: none;
 }
@@ -454,6 +477,19 @@ input:-ms-placeholder {
   display: none;
   padding-top: 50px;
   overflow-y: auto;
+}
+
+.spinner {
+  position:relative;
+  left:50%;
+  top:0px;
+  width:40px;
+  height:40px;
+  display: none;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat no-repeat;
+  background-image: url('../img/loader.gif');  
 }
 /*
 #searchResults {
@@ -749,7 +785,8 @@ input:-ms-placeholder {
   left:0px;
   top:60%;
   height: 30%;
-    
+  max-width: 400px;
+  max-height: 400px;
   background-color:#777;
   outline: 5px solid #777;
   border: 1px solid white;
@@ -760,6 +797,20 @@ input:-ms-placeholder {
   text-align: left;
   overflow:auto;
   z-index: 8000;
+}
+
+#footnoteClose {
+    position: absolute;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+    background-color: :#777;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+    background-image: url(../img/note-close.png);
+    background-repeat: no-repeat no-repeat;
+    background-position: center center;
+    top: 0px;
 }
 
 #footnoteView p {

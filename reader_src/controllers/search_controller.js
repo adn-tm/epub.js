@@ -54,8 +54,10 @@ EPUBJS.reader.SearchController = function(book) {
 	var doSearch = function(){
 		var qry = $("#searchBox").val();
 		$list.empty();
-		if (qry)
+		if (qry) {
+			$("#searchProgress").show();
 			book.search(qry).then(function(matches){
+					$("#searchProgress").hide();
 					generateTocItems(matches);
 					$list.find(".search_link").on(eventName, function(event){
 							var url = this.getAttribute('href');
@@ -87,6 +89,7 @@ EPUBJS.reader.SearchController = function(book) {
 							});
 					});
 			});
+		}
 		onShow();
 	};
 

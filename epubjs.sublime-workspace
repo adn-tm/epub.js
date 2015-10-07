@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"tr",
+				"tr"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"key",
+				"keypress〔function〕"
+			],
+			[
+				"ma",
+				"margin-left"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"bac",
+				"background-image"
+			],
+			[
+				"no",
+				"no-repeat"
+			],
+			[
+				"back",
+				"background-repeat"
+			],
+			[
 				"font",
 				"font-family"
 			],
@@ -20,20 +52,12 @@
 				"click"
 			],
 			[
-				"back",
-				"background-color"
-			],
-			[
 				"text",
 				"text-align"
 			],
 			[
 				"fo",
 				"fontScale〔variable〕"
-			],
-			[
-				"ma",
-				"maxMarks"
 			],
 			[
 				"group",
@@ -220,42 +244,74 @@
 	"buffers":
 	[
 		{
-			"file": "build/hooks.js",
-			"settings":
-			{
-				"buffer_size": 8782,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "reader_src/controllers/footnote_controller.js",
-			"settings":
-			{
-				"buffer_size": 2267,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "reader_src/controllers/meta_controller.js",
 			"settings":
 			{
-				"buffer_size": 622,
+				"buffer_size": 621,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/book.js",
+			"settings":
+			{
+				"buffer_size": 36716,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "reader_src/reader.js",
+			"settings":
+			{
+				"buffer_size": 8559,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 5764,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "reader/css/main.css",
+			"settings":
+			{
+				"buffer_size": 18291,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "reader_src/controllers/reader_controller.js",
+			"settings":
+			{
+				"buffer_size": 2995,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "reader_src/controllers/bookmarks_controller.js",
+			"settings":
+			{
+				"buffer_size": 1512,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "reader/js/libs/colorpicker.js",
+			"settings":
+			{
+				"buffer_size": 17062,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "src/chapter.js",
 			"settings":
 			{
-				"buffer_size": 9852,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/epubcfi.js",
-			"settings":
-			{
-				"buffer_size": 14247,
+				"buffer_size": 9857,
 				"line_ending": "Unix"
 			}
 		},
@@ -263,15 +319,23 @@
 			"file": "src/renderer.js",
 			"settings":
 			{
-				"buffer_size": 29761,
+				"buffer_size": 29859,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "examples/nel.html",
+			"file": "build/epub.js",
 			"settings":
 			{
-				"buffer_size": 5586,
+				"buffer_size": 214993,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/render_iframe.js",
+			"settings":
+			{
+				"buffer_size": 7833,
 				"line_ending": "Unix"
 			}
 		}
@@ -279,9 +343,17 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 47.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"set",
+				"Set Syntax: XML"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
 			[
 				"",
 				"Hex Viewer: Toggle Hex View"
@@ -324,19 +396,38 @@
 	},
 	"file_history":
 	[
-		"/Users/dima/Documents/GitHub/epubjs.origin/books/NEL/redFlower/OEBPS/toc.ncx",
-		"/Users/dima/Documents/GitHub/epubjs.origin/reader_src/controllers/bookmarks_controller.js",
-		"/Users/dima/Documents/GitHub/epubjs.origin/src/parser.js",
-		"/Users/dima/Documents/GitHub/epubjs.origin/examples/nel.html",
 		"/Users/dima/Documents/GitHub/epubjs.origin/reader_src/controllers/settings_controller.js",
-		"/Users/dima/Documents/GitHub/epub.js/js/loadbook.js",
-		"/Users/dima/Documents/GitHub/epubjs.origin/reader/css/main.css",
-		"/Users/dima/Documents/GitHub/epubjs.origin/reader/css/fonts/fonts.css",
-		"/Users/dima/Documents/GitHub/epubjs.origin/src/book.js",
+		"/Users/dima/Desktop/muar.sh",
+		"/Users/dima/Desktop/table.html",
+		"/Users/dima/Documents/GitHub/epub.js/src/reader_src/controllers/search_controller.js",
+		"/Users/dima/Documents/GitHub/epub.js/src/src/epubcfi.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/reader_src/controllers/search_controller.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/src/epubcfi.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/reader_src/controllers/footnote_controller.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/build/reader.js",
 		"/Users/dima/Documents/GitHub/epubjs.origin/reader_src/controllers/controls_controller.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/reader_src/controllers/bookmarks_controller.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/reader_src/controllers/sidebar_controller.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/reader_src/controllers/reader_controller.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/reader_src/controllers/toc_controller.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/hooks/default/smartimages.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/src/core.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/reader/css/main.css",
+		"/Users/dima/Documents/GitHub/epubjs.origin/src/chapter.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/reader/css/fonts/fonts.css",
+		"/Users/dima/Documents/GitHub/epubjs.origin/examples/nel.html",
+		"/Users/dima/Documents/GitHub/epubjs.origin/build/hooks.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/index.html",
+		"/Users/dima/Documents/GitHub/epubjs.origin/src/renderer.js",
+		"/Users/dima/Documents/GitHub/muar/routes/api.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/books/NEL/chronicles/OEBPS/Text/cover.xhtml",
+		"/Users/dima/Documents/GitHub/epubjs.origin/books/NEL/chronicles/OEBPS/Text/chapter5.xhtml",
+		"/Users/dima/Documents/GitHub/epubjs.origin/books/NEL/redFlower/OEBPS/toc.ncx",
+		"/Users/dima/Documents/GitHub/epubjs.origin/src/parser.js",
+		"/Users/dima/Documents/GitHub/epub.js/js/loadbook.js",
+		"/Users/dima/Documents/GitHub/epubjs.origin/src/book.js",
 		"/Users/dima/Documents/GitHub/epubjs.origin/reader_src/reader.js",
 		"/Users/dima/Documents/GitHub/epubjs.origin/src/xpath.js",
-		"/Users/dima/Documents/GitHub/epubjs.origin/build/reader.js",
 		"/Users/dima/Documents/GitHub/epubjs.origin/build/epub.js",
 		"/Users/dima/Documents/GitHub/epubjs.origin/reader/js/libs/xpath.js",
 		"/Users/dima/Downloads/colorpicker/index.html",
@@ -345,7 +436,6 @@
 		"/Users/dima/Documents/GitHub/epubjs.origin/reader/js/libs/jquery-2.1.0.min.js",
 		"/Users/dima/Documents/GitHub/epubjs.origin/hooks/default/endnotes.js",
 		"/Users/dima/Documents/GitHub/epubjs.origin/reader_src/controllers/notes_controller.js",
-		"/Users/dima/Documents/GitHub/epubjs.origin/src/renderer.js",
 		"/Users/dima/Documents/GitHub/epubjs.origin/src/render_iframe.js",
 		"/Users/dima/Documents/GitHub/epub.js/src/reader_src/controllers/artifacts_controller.js",
 		"/Users/dima/Documents/GitHub/epubjs.origin/reader/css/user-settings.css",
@@ -433,25 +523,7 @@
 		"/Users/dima/Documents/GitHub/muar/public/uploads/55eebd98b35a32b14c4b83b9/55eebd9db35a32b14c4b83bb.json",
 		"/Users/dima/Documents/GitHub/muar/public/uploads/55cb404c1e9ef9040a5483b7/IMGP4958.JPG.json",
 		"/Users/dima/Documents/GitHub/muar/public/uploads/546b63315233a000009a6e0a/55dfe2afa0b3e9bd718a84c9.json",
-		"/Users/dima/Documents/GitHub/muar/public/src/js/upload-images.js",
-		"/Users/dima/Documents/GitHub/muar/public/uploads/546b63315233a000009a6e0a/55dfe2afa0b3e9bd718a84ca.json",
-		"/Users/dima/Documents/GitHub/muar/public/uploads/546b63315233a000009a6e0a/IMGP4995.JPG.json",
-		"/Users/dima/Documents/GitHub/muar/views/auth/objects/edit.jade",
-		"/Users/dima/Documents/GitHub/muar/views/auth/objects/add.jade",
-		"/Users/dima/Documents/GitHub/muar/package.json",
-		"/Users/dima/Documents/GitHub/muar/public/src/js/upload.js",
-		"/Users/dima/Documents/GitHub/muar/views/auth/uploadsMixins",
-		"/Users/dima/Documents/GitHub/muar/routes/admin/uploadDelegate.js",
-		"/Users/dima/Documents/GitHub/muar/models/main.js",
-		"/Users/dima/Documents/GitHub/muar/public/src/js/uploadProgress.js",
-		"/Users/dima/Documents/GitHub/muar/views/auth/users/edit.jade",
-		"/Users/dima/Documents/GitHub/muar/routes/admin/acl.js",
-		"/Users/dima/Documents/GitHub/muar/views/layout.jade",
-		"/Users/dima/Documents/GitHub/muar/views/auth/subjects/edit.jade",
-		"/Users/dima/Documents/GitHub/muar/views/auth/projects/edit.jade",
-		"/Users/dima/Documents/GitHub/muar/views/auth/subjects/add.jade",
-		"/Users/dima/Documents/GitHub/muar/views/auth/mixins.jade",
-		"/Users/dima/Documents/GitHub/muar/public/src/styl/add.styl"
+		"/Users/dima/Documents/GitHub/muar/public/src/js/upload-images.js"
 	],
 	"find":
 	{
@@ -459,7 +531,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"/Users/dima/Documents/GitHub/epubjs.origin/src",
@@ -482,9 +554,59 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"resized",
+			"onResized",
+			"resize",
+			"<b>",
+			"<td align=\"right\">",
+			"<td>",
+			"<td>\\d",
+			"lor=",
+			"center",
+			"</td>",
+			"<td>",
+			"resized",
+			"resize",
+			"enterSubmit",
+			"eventClickName",
+			"eventName",
+			"mousemove",
+			"mouseup",
+			"mousedown",
+			"eventName",
+			"click",
+			"%;",
+			"$next",
+			"#next",
+			"#next ",
+			"#next",
+			".next",
+			"click",
+			"main",
+			"a",
+			"slider",
+			"logoBannerView",
+			"iPhone",
+			"hypothesis",
+			"document",
+			"createTreeWalker",
+			"modal",
+			"user-select",
+			";\n",
+			"range",
+			"gotoCfi",
+			"goto",
+			".then",
+			"punc",
+			"find",
+			"search",
+			"generate",
+			"img",
+			"resize",
+			"adjustFontSize",
 			".evaluate",
 			"evaluate",
 			"loadXml",
@@ -562,57 +684,7 @@
 			"articleEditorUploadsCreate",
 			"articleEditorUploads",
 			"articleIdOrToken",
-			"methodOverride",
-			".ru",
-			"desc",
-			"caption",
-			"saveImageDescriptor",
-			"uuid",
-			"saveImageDescriptor",
-			"uuid",
-			"saveImageDescriptor",
-			".url",
-			"artcileId",
-			"meth",
-			"id",
-			"url",
-			".url",
-			"baseUrl",
-			"id",
-			"user_id",
-			"		var parentId= request.params.parentId || request.session.user_id.toString();;\nuser_id",
-			"user_id",
-			"options",
-			"__dirname",
-			"options",
-			"__uploader.ext",
-			"baseDirectory",
-			"__uploader.ext.baseDirectory",
-			"__baseDirectory",
-			"param",
-			"session.token",
-			"uploads",
-			"/auth/uploads",
-			"app",
-			"base",
-			"error",
-			"Image",
-			"commonRejectJSONHandler",
-			"commonRejectHandler",
-			"uploadBinaryContentResolveHandler",
-			"createObjectResolveHandler",
-			"Media",
-			"Image",
-			"Article",
-			"agent",
-			"Article",
-			"articleId",
-			"__baseUrl",
-			"__baseDirectory",
-			"Article",
-			"subjects",
-			"subject",
-			"siubject"
+			"methodOverride"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -620,6 +692,16 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
+			"<td class=\"num\">",
+			"<td align=\"right\">",
+			"<td align=\"right\">$1",
+			"lor:",
+			"\"center\"",
+			"<b> </td>",
+			"<td> <b>",
+			"<td> </td>",
+			"eventClickName",
 			"fontSize",
 			"font-family: 'PTSerif'; ",
 			"Medium",
@@ -702,23 +784,23 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 9,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "build/hooks.js",
+					"file": "reader_src/controllers/meta_controller.js",
 					"settings":
 					{
-						"buffer_size": 8782,
+						"buffer_size": 621,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								464,
-								464
+								265,
+								265
 							]
 						],
 						"settings":
@@ -735,18 +817,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "reader_src/controllers/footnote_controller.js",
+					"file": "src/book.js",
 					"settings":
 					{
-						"buffer_size": 2267,
+						"buffer_size": 36716,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								783,
-								783
+								673,
+								676
 							]
 						],
 						"settings":
@@ -763,137 +845,281 @@
 				},
 				{
 					"buffer": 2,
-					"file": "reader_src/controllers/meta_controller.js",
+					"file": "reader_src/reader.js",
 					"settings":
 					{
-						"buffer_size": 622,
+						"buffer_size": 8559,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								287,
-								287
+								2003,
+								2003
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1005.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "src/chapter.js",
+					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 9852,
+						"buffer_size": 5764,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3811,
-								3811
+								979,
+								979
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2800.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/epubcfi.js",
-					"settings":
-					{
-						"buffer_size": 14247,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12935,
-								12935
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 7396.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/renderer.js",
-					"settings":
-					{
-						"buffer_size": 29761,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								24254,
-								24254
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 14990.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "examples/nel.html",
-					"settings":
-					{
-						"buffer_size": 5586,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								861,
-								861
-							]
-						],
-						"settings":
-						{
+							"auto_complete": false,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "reader/css/main.css",
+					"settings":
+					{
+						"buffer_size": 18291,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15929,
+								15929
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 13439.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "reader_src/controllers/reader_controller.js",
+					"settings":
+					{
+						"buffer_size": 2995,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								307,
+								178
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "reader_src/controllers/bookmarks_controller.js",
+					"settings":
+					{
+						"buffer_size": 1512,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								405,
+								405
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "reader/js/libs/colorpicker.js",
+					"settings":
+					{
+						"buffer_size": 17062,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								484,
+								484
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/chapter.js",
+					"settings":
+					{
+						"buffer_size": 9857,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								698,
+								698
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4188.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/renderer.js",
+					"settings":
+					{
+						"buffer_size": 29859,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								27093,
+								27093
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 16560.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "build/epub.js",
+					"settings":
+					{
+						"buffer_size": 214993,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								193216,
+								193216
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 108807.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/render_iframe.js",
+					"settings":
+					{
+						"buffer_size": 7833,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4023,
+								4023
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1726.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -965,6 +1191,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 221.0,
+	"side_bar_width": 255.0,
 	"status_bar_visible": true
 }

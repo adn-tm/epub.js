@@ -22,7 +22,7 @@
             document.onreadystatechange = function () {
               if (document.readyState == "complete") {
                 EPUBJS.cssPath = "reader/css/";
-                window.reader = ePubReader("books/NEL/chronicles/", {generatePagination:false});
+                window.reader = ePubReader("books/NEL/chronicles/", {generatePagination:false, storage:true});
             };
           };
 
@@ -85,6 +85,7 @@
         </div>
         <div id="searchView"  class="listView">
           <ul id="searchResults"></ul>
+          <div id="searchProgress" class="spinner"></div>
         </div>
         <div id="bookmarksView" class="listView">
           <ul id="bookmarks"></ul>
@@ -153,6 +154,6 @@
           </div>
       </div>
       <div class="overlay"></div>
-      <a id="footnoteClose"></a><div id="footnoteView"></div>
+      <div id="footnoteView"><div id="footnoteClose">&nbsp;</div><div id="footnoteWrapper"></div></div>
     </body>
 </html>

@@ -1086,9 +1086,10 @@ EPUBJS.Renderer.prototype.hideHashChanges = function(){
 
 */
 
-EPUBJS.Renderer.prototype.resize = function(width, height, setSize){
+EPUBJS.Renderer.prototype.resize = function(width, height, setSize, selfUpdate){
 	var spreads;
-
+	if (width == this.width && height== this.height)
+		return;
 	this.width = width;
 	this.height = height;
 
@@ -1101,11 +1102,11 @@ EPUBJS.Renderer.prototype.resize = function(width, height, setSize){
 	if(this.contents){
 		this.reformat();
 	}
-
-	this.trigger("renderer:resized", {
-		width: this.width,
-		height: this.height
-	});
+	if (!selfUpdate)
+		this.trigger("renderer:resized", {
+			width: this.width,
+			height: this.height
+		});
 };
 
 //-- Listeners for events in the frame
@@ -1114,7 +1115,7 @@ EPUBJS.Renderer.prototype.onResized = function(e) {
 	var width = this.container.clientWidth;
 	var height = this.container.clientHeight;
 
-	this.resize(width, height, false);
+	this.resize(width, height, false, true);
 };
 
 EPUBJS.Renderer.prototype.addEventListeners = function(){

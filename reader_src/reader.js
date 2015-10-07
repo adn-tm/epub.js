@@ -23,7 +23,7 @@ EPUBJS.reader.plugins = {}; //-- Attach extra Controllers as plugins (like searc
 EPUBJS.Reader = function(bookPath, _options) {
 	var reader = this;
 	var book;
-	var plugin;
+	var plugin; 
 	var $viewer = $("#viewer");
 	var search = window.location.search;
 	var parameters;
@@ -90,7 +90,7 @@ EPUBJS.Reader = function(bookPath, _options) {
 	reader.ControlsController = EPUBJS.reader.ControlsController.call(reader, book);
 	reader.SidebarController = EPUBJS.reader.SidebarController.call(reader, book);
 	reader.BookmarksController = EPUBJS.reader.BookmarksController.call(reader, book);
-//	reader.NotesController = EPUBJS.reader.NotesController.call(reader, book); 
+//	reader.NotesController = EPUBJS.reader.NotesController.call(reader, book);
 	reader.FootnoteController = EPUBJS.reader.FootnoteController.call(reader, book);
 	reader.SearchController = EPUBJS.reader.SearchController.call(reader, book);	
 
@@ -188,14 +188,15 @@ EPUBJS.Reader.prototype.addBookmark = function(cfi) {
 };
 
 EPUBJS.Reader.prototype.removeBookmark = function(cfi) {
-	if ('cfi' in cfi)
+	if (typeof cfi == "object")
+		if ('cfi' in cfi)
 			cfi=cfi.cfi;
 	var bookmark = this.isBookmarked(cfi);
 	if( bookmark === -1 ) return;
 
 	this.settings.bookmarks.splice(bookmark, 1);
 
-	this.trigger("reader:unbookmarked", bookmark);
+	this.trigger("reader:unbookmarked", bookmark, cfi);
 };
 
 EPUBJS.Reader.prototype.isBookmarked = function(cfi) {

@@ -18,47 +18,46 @@ EPUBJS.reader.BookmarksController = function() {
 		$bookmarks.hide();
 	};
 	
-	var counter = 0;
-/*	
-	var getBookmarkCaption = function(cfi, maxLength) {
-		if (!maxLength)
-				maxLength = 100;
-		var epubcfi =new EPUBJS.EpubCFI();
-		var a=epubcfi.generateRangeFromCfi(cfi, reader.book.renderer.doc);
-		if (a) {
-			var text=a.toString();
-			
-			if (text.length>maxLength) {
-				text = text.substr(0, maxLength)+"...";
-			} else if (text.length<20) {
-			// TODO: cut some characters from next element	
-			}
-		} else text=cfi; 
-		return text;
-	}
-*/
+	var hashCode = function(s) {
+		  var hash = 0, i, chr, len;
+		  if (s.length == 0) return hash;
+		  for (i = 0, len = s.length; i < len; i++) {
+		    chr   = s.charCodeAt(i);
+		    hash  = ((hash << 5) - hash) + chr;
+		    hash |= 0; // Convert to 32bit integer
+		  }
+		  return hash.toString();
+		};
+
 	var createBookmarkItem = function(bm) {
 		var listitem = document.createElement("li"),
-				link = document.createElement("a");
 		
-		listitem.id = "bookmark-"+counter;
+				link = document.createElement("a"),
+				rm = document.createElement("div");
+		
+		listitem.id = "bookmark-"+hashCode(bm.cfi);
 		listitem.classList.add('list_item');
 		
-		//-- TODO: Parse Cfi
-		link.textContent = bm.text || ""; // getBookmarkCaption(cfi); // cfi;
-		link.href = bm.cfi;
-
-		link.classList.add('bookmark_link');
 		
+		link.textContent = bm.text || ""; 
+		link.href = bm.cfi;
+		link.classList.add('bookmark_link');
 		link.addEventListener(eventName, function(event){
 				var cfi = this.getAttribute('href');
 				book.gotoCfi(cfi);
 				event.preventDefault();
 		}, false);
-		
+
+		rm.classList.add('bookmark_remove');
+		rm.innerHTML = "&nbsp;"; 
+		rm.setAttribute('data-cfi', bm.cfi);
+		rm.addEventListener(eventName, function(event){
+				var cfi = this.getAttribute('data-cfi');
+				reader.removeBookmark(cfi);
+		}, false);
+
+		listitem.appendChild(rm);
 		listitem.appendChild(link);
-		
-		counter++;
 		
 		return listitem;
 	};
@@ -75,8 +74,8 @@ EPUBJS.reader.BookmarksController = function() {
 		$list.append(item);
 	});
 	
-	this.on("reader:unbookmarked", function(index) {
-		var $item = $("#bookmark-"+index);
+	this.on("reader:unbookmarked", function(index, cfi) {
+		var $item = $("#bookmark-"+hashCode(cfi) );
 		$item.remove();
 	});
 

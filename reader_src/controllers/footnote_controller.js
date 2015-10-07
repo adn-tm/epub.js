@@ -2,6 +2,7 @@ EPUBJS.reader.FootnoteController = function(toc) {
 	var reader = this;
 	var book = this.book;	
 	var footnoteFrame = $("#footnoteView");
+	var wrapperFrame = $("#footnoteWrapper");
 	var footnoteClose = $("#footnoteClose");
 	var isShown = false;
 	var ANIMATION_DURATION = 400;
@@ -17,20 +18,19 @@ EPUBJS.reader.FootnoteController = function(toc) {
 		footnoteFrame.fadeOut(ANIMATION_DURATION);
 	} 
 	
-	$(window).on("click touchstart", function() { 
+/*	$(window).on("click touchstart", function() { 
 		if (isShown)
 			hideFootnote(); 
 	}, false);
-	
+*/	
 	book.on("renderer:click", hideFootnote);
 	book.on("renderer:touchstart", hideFootnote);
 	
-//	footnoteFrame.on("click touchstart", hideFootnote, false);
-/*	footnoteClose.on("click touchstart", function() { 
+	footnoteClose.click("click", function() { 
 			if (isShown)
 				hideFootnote(); 
 	}, false);
-*/
+
 
 	function showFootnote(event, textNode) {
 		if (!footnoteFrame || !textNode)
@@ -44,8 +44,8 @@ EPUBJS.reader.FootnoteController = function(toc) {
 		var clonedText = $(textNode).clone();
 		var wrapper = $('<div id="footNodeWrapper"></div>');
 		wrapper.append(clonedText);
-		footnoteFrame.empty();
-		footnoteFrame.append(wrapper);
+		wrapperFrame.empty();
+		wrapperFrame.append(wrapper);
 		footnoteFrame.css({ top: y+"px", left: x+"px"});
 		footnoteFrame.fadeIn({duration:ANIMATION_DURATION, complete:function(){ isShown = true; } });
 		
