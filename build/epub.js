@@ -5725,22 +5725,23 @@ EPUBJS.Parser.prototype.toc = function(tocXml, spineIndexByURL, bookSpine){
 		var list = [],
 			length, 
 			iterator,
-			needsReciursion;
+			needsReciursion,
+			snapshot;
 
 		if (typeof tocXml.evaluate == "function") {
-			var snapshot = tocXml.evaluate("*[local-name()='navPoint']", parent, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+			snapshot = tocXml.evaluate("*[local-name()='navPoint']", parent, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 			length = snapshot.snapshotLength;
 			needsReciursion = true;
 			iterator = function(i) {
 				return snapshot.snapshotItem(i);
-			}
+			};
 		} else {
-			var snapshot = tocXml.querySelectorAll("navPoint");
+			snapshot = tocXml.querySelectorAll("navPoint");
 			length = snapshot.length;
 			needsReciursion = false;
 			iterator = function(i) {
 				return snapshot[i];
-			}
+			};
 		}
 
 

@@ -287,7 +287,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 5878,
+				"buffer_size": 6016,
 				"line_ending": "Unix"
 			}
 		},
@@ -589,6 +589,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Unarch",
+			"zip",
 			"url",
 			"click",
 			"triggerEvent",
@@ -714,9 +716,7 @@
 			"fs.fileExistsSync",
 			"skip_auth",
 			"/auth/subj",
-			"/auth/subjec",
-			"uploadsList",
-			"markFileAsStoredWithUUID"
+			"/auth/subjec"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -859,8 +859,8 @@
 						"selection":
 						[
 							[
-								914,
-								918
+								19224,
+								19230
 							]
 						],
 						"settings":
@@ -870,7 +870,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 77.0,
+						"translation.y": 9776.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -887,8 +887,8 @@
 						"selection":
 						[
 							[
-								5113,
-								5113
+								1553,
+								1554
 							]
 						],
 						"settings":
@@ -898,7 +898,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1999.0,
+						"translation.y": 536.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -908,15 +908,15 @@
 					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 5878,
+						"buffer_size": 6016,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1265,
-								1265
+								738,
+								738
 							]
 						],
 						"settings":
@@ -927,7 +927,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 426.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -119,10 +119,10 @@ EPUBJS.reader.SettingsController = function() {
 			path= window.location.origin + path;
 			applySettings();
 			renderer.applyHeadTags({
-				'link':{'rel':'stylesheet', 'href':path+'/reader/css/user-settings.css'}
+				'link':{'rel':'stylesheet', 'href':path+"/"+EPUBJS.cssPath+'user-settings.css'}
 			});
 			renderer.applyHeadTags({
-				'link':{'rel':'stylesheet', 'href':path+'/reader/css/fonts/fonts.css'}
+				'link':{'rel':'stylesheet', 'href':path+"/"+EPUBJS.cssPath+'user-settings.css'}
 			});
 			
 		
