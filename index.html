@@ -26,7 +26,7 @@
 
             document.onreadystatechange = function () {
               if (document.readyState == "complete") {
-                EPUBJS.cssPath = "reader/css/";
+                EPUBJS.cssPath = "/reader/css/";
                 window.reader = ePubReader("books/NEL/war-and-peace.epub", {generatePagination:false, storage:true, contained:true});
             };
           };
@@ -34,15 +34,15 @@
         </script>
 
         <!-- Render -->
-    <!--       <script src="build/epub.js"></script>
+    <!--    <script src="build/epub.js"></script>
         <script src="build/hooks.js"></script>
         <script src="build/reader.js"></script>
+-->  
 
-   --> 
-        <script src="../reader/js/epub.min.js"></script>
+           <script src="../reader/js/epub.min.js"></script>
         <script src="../reader/js/hooks.min.js"></script>
         <script src="../reader/js/reader.min.js"></script>
-        
+          
  
 <script src="reader/js/libs/screenfull.min.js"></script>
         <!-- Hypothesis 

@@ -110,19 +110,21 @@ EPUBJS.reader.SettingsController = function() {
 				window.localStorage.setItem('settings', JSON.stringify(settings) );
 	}
 	book.renderer.registerHook("beforeChapterDisplay", function(callback, renderer){
-		 var path =  window.location.pathname;
+		/* var path =  window.location.pathname;
 			path=path.split("/");
 			if (path.length>2) {
 				path.pop(); path.pop();
 			} 
-			path = path.join("/"); 
-			path= window.location.origin + path;
+			path = path.join("/");  */
+
+			var path= window.location.origin+(EPUBJS.cssPath.indexOf("/")!=0?"/":"") + EPUBJS.cssPath;
+			path = path.replace(/\/$/, '');
 			applySettings();
 			renderer.applyHeadTags({
-				'link':{'rel':'stylesheet', 'href':path+"/"+EPUBJS.cssPath+'user-settings.css'}
+				'link':{'rel':'stylesheet', 'href':path+'/user-settings.css'}
 			});
 			renderer.applyHeadTags({
-				'link':{'rel':'stylesheet', 'href':path+"/"+EPUBJS.cssPath+'user-settings.css'}
+				'link':{'rel':'stylesheet', 'href':path+'/fonts/fonts.css'}
 			});
 			
 		

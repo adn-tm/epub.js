@@ -287,7 +287,15 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 6016,
+				"buffer_size": 6026,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "reader_src/controllers/settings_controller.js",
+			"settings":
+			{
+				"buffer_size": 3931,
 				"line_ending": "Unix"
 			}
 		},
@@ -332,10 +340,18 @@
 			}
 		},
 		{
+			"file": "build/reader.js",
+			"settings":
+			{
+				"buffer_size": 36757,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "build/epub.js",
 			"settings":
 			{
-				"buffer_size": 215066,
+				"buffer_size": 215073,
 				"line_ending": "Unix"
 			}
 		},
@@ -368,6 +384,22 @@
 			"settings":
 			{
 				"buffer_size": 2681,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 3074,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/parser.js",
+			"settings":
+			{
+				"buffer_size": 12740,
 				"line_ending": "Unix"
 			}
 		}
@@ -566,6 +598,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"<project>",
 			"/Users/dima/Documents/GitHub/epubjs.origin/src",
 			"<project>",
 			"/Users/dima/Documents/GitHub/epubjs.origin",
@@ -589,6 +622,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"path+'/reader/css/fonts/fonts.css'",
 			"Unarch",
 			"zip",
 			"url",
@@ -715,8 +749,7 @@
 			"info",
 			"fs.fileExistsSync",
 			"skip_auth",
-			"/auth/subj",
-			"/auth/subjec"
+			"/auth/subj"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -816,7 +849,6 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
 				{
@@ -908,15 +940,15 @@
 					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 6016,
+						"buffer_size": 6026,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								738,
-								738
+								1466,
+								1466
 							]
 						],
 						"settings":
@@ -927,13 +959,41 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 426.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
+					"file": "reader_src/controllers/settings_controller.js",
+					"settings":
+					{
+						"buffer_size": 3931,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3441,
+								3441
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1275.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "reader/css/main.css",
 					"settings":
 					{
@@ -961,7 +1021,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "reader_src/controllers/bookmarks_controller.js",
 					"settings":
 					{
@@ -989,7 +1049,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "reader/js/libs/colorpicker.js",
 					"settings":
 					{
@@ -1017,7 +1077,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "src/chapter.js",
 					"settings":
 					{
@@ -1044,7 +1104,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "src/renderer.js",
 					"settings":
 					{
@@ -1066,25 +1126,52 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2462.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "build/epub.js",
+					"buffer": 10,
+					"file": "build/reader.js",
 					"settings":
 					{
-						"buffer_size": 215066,
+						"buffer_size": 36757,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								167956,
-								167961
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "build/epub.js",
+					"settings":
+					{
+						"buffer_size": 215073,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1101,7 +1188,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 12,
 					"file": "src/render_iframe.js",
 					"settings":
 					{
@@ -1129,7 +1216,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 13,
 					"file": "src/storage.js",
 					"settings":
 					{
@@ -1157,7 +1244,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 14,
 					"file": "reader_src/controllers/footnote_controller.js",
 					"settings":
 					{
@@ -1185,7 +1272,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 15,
 					"file": "reader_src/controllers/search_controller.js",
 					"settings":
 					{
@@ -1208,6 +1295,61 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 669.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "Gruntfile.js",
+					"settings":
+					{
+						"buffer_size": 3074,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								522,
+								522
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "src/parser.js",
+					"settings":
+					{
+						"buffer_size": 12740,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9986,
+								9986
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5271.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

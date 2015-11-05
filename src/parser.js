@@ -413,7 +413,6 @@ EPUBJS.Parser.prototype.toc = function(tocXml, spineIndexByURL, bookSpine){
 						"parent" : parent ? parent.getAttribute('id') : null,
 						"cfi" : cfi
 			};
-			console.log(a);
 			list.unshift(a);
 
 		}
